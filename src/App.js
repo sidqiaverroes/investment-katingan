@@ -1,10 +1,10 @@
 import React from "react";
-import Nav from "./components/navbar";
+import LandingPage from "./Pages/LandingPage";
 
 function App() {
   return (
     <div>
-      <Nav />
+      <LandingPage />
     </div>
   );
 }
