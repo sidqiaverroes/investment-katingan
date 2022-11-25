@@ -2,7 +2,8 @@ import React from "react";
 import SponsorData from "../Data/SponsorData";
 
 function Sponsor() {
-  return <div>Sponsor</div>;
+  // <div>Sponsor</div>
+  return;
 }
 
 export default Sponsor;
