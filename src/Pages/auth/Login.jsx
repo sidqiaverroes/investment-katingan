@@ -42,13 +42,13 @@ function Login() {
     try {
       const data = await loginUser(userData);
       console.log(data);
-      await dispatch(SET_LOGIN(true));
-      await dispatch(SET_NAME(data.name));
+      dispatch(SET_LOGIN(true));
+      dispatch(SET_NAME(data.name));
       navigate("/dashboard");
       // setIsLoading(false);
     } catch (error) {
       // setIsLoading(false);
-      return toast.error("Error, please try again.");
+      return toast.error(error + " please try again.");
     }
   };
 
@@ -71,7 +71,6 @@ function Login() {
             </label>
             <input
               type="email"
-              id="email"
               required
               name="email"
               value={email}
@@ -97,7 +96,6 @@ function Login() {
             </div>
             <input
               type="password"
-              id="password"
               name="password"
               value={password}
               onChange={handleInputChange}

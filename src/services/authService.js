@@ -9,26 +9,26 @@ export const validateEmail = (email) => {
   );
 };
 
-// Register User
-export const registerUser = async (userData) => {
-  try {
-    const response = await axios.post(
-      `${BACKEND_URL}/api/users/register`,
-      userData,
-      { withCredentials: true }
-    );
-    if (response.statusText === "OK") {
-      toast.success("User Registered successfully");
-    }
-    return response.data;
-  } catch (error) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-    toast.error(message);
-  }
-};
+// // Register User
+// export const registerUser = async (userData) => {
+//   try {
+//     const response = await axios.post(
+//       `${BACKEND_URL}/api/users/register`,
+//       userData,
+//       { withCredentials: true }
+//     );
+//     if (response.statusText === "OK") {
+//       toast.success("User Registered successfully");
+//     }
+//     return response.data;
+//   } catch (error) {
+//     const message =
+//       (error.response && error.response.data && error.response.data.message) ||
+//       error.message ||
+//       error.toString();
+//     toast.error(message);
+//   }
+// };
 
 // Login User
 export const loginUser = async (userData) => {
@@ -40,6 +40,7 @@ export const loginUser = async (userData) => {
     if (response.statusText === "OK") {
       toast.success("Login Successful...");
     }
+    console.log(response.data);
     return response.data;
   } catch (error) {
     const message =

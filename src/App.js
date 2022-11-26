@@ -11,7 +11,7 @@ import { getLoginStatus } from "./services/authService";
 import NotFound from "./Pages/NotFound";
 import LandingPage from "./Pages/LandingPage";
 import Login from "./Pages/auth/Login";
-import Dashboard from "./Pages/Dashboard";
+import Dashboard from "./Pages/admin/Dashboard";
 import ForgotPass from "./Pages/auth/ForgotPass";
 
 import axios from "axios";
