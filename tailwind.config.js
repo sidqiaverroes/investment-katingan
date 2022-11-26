@@ -12,6 +12,7 @@ module.exports = {
         transparent: "transparent",
         current: "currentColor",
         birumud: "#40A2D5",
+        birumud2: "#267fad",
         orenmud: "#FE8432",
         ijomud: "#B5E4A5",
         ijotua: "#42B918",
