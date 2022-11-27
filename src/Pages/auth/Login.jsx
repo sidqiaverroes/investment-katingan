@@ -5,16 +5,17 @@ import { useDispatch } from "react-redux";
 import { SET_LOGIN, SET_NAME } from "../../redux/authSlice";
 import { loginUser, validateEmail } from "../../services/authService";
 import HeroImage from "../../Assets/hero.png";
+import Loader from "../../components/Loader";
 
 const initialState = {
   email: "",
   password: "",
 };
 
-function Login() {
+const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setformData] = useState(initialState);
   const { email, password } = formData;
 
@@ -38,24 +39,26 @@ function Login() {
       email,
       password,
     };
-    // setIsLoading(true);
+    setIsLoading(true);
     try {
       const data = await loginUser(userData);
       console.log(data);
-      dispatch(SET_LOGIN(true));
-      dispatch(SET_NAME(data.name));
+      await dispatch(SET_LOGIN(true));
+      await dispatch(SET_NAME(data.name));
       navigate("/dashboard");
-      // setIsLoading(false);
+      setIsLoading(false);
     } catch (error) {
-      // setIsLoading(false);
-      return toast.error(error + " please try again.");
+      setIsLoading(false);
+      // return toast.error(error + " please try again.");
     }
   };
 
   return (
     <div className="flex flex-col h-screen w-full justify-center items-center ">
+      {isLoading && <Loader />}
       <img
         src={HeroImage}
+        alt=""
         className="absolute object-cover w-full h-full"
       ></img>
       <div className="relative z-10 bg-white py-20 px-20 rounded-lg border-2 shadow">
@@ -98,6 +101,7 @@ function Login() {
               type="password"
               name="password"
               value={password}
+              required
               onChange={handleInputChange}
               className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
             />
@@ -115,6 +119,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
 export default Login;

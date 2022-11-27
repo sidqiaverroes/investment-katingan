@@ -79,7 +79,7 @@ const ProductList = ({ products, isLoading }) => {
   }, [products, search, dispatch]);
 
   return (
-    <div className="product-list">
+    <div className="flex flex-col">
       <div className="table">
         <div>
           <span>
@@ -104,10 +104,9 @@ const ProductList = ({ products, isLoading }) => {
                 <tr>
                   <th>No</th>
                   <th>Name</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Value</th>
+                  <th>Location</th>
+                  <th>Land Area</th>
+                  <th>Production</th>
                   <th>Action</th>
                 </tr>
               </thead>

@@ -14,6 +14,7 @@ module.exports = {
         birumud: "#40A2D5",
         birumud2: "#267fad",
         orenmud: "#FE8432",
+        orenmud2: "#f36d13",
         ijomud: "#B5E4A5",
         ijotua: "#42B918",
         black: colors.black,
