@@ -79,11 +79,11 @@ const ProductList = ({ products, isLoading }) => {
   }, [products, search, dispatch]);
 
   return (
-    <div className="flex flex-col">
-      <div className="table">
+    <div className="flex flex-col justify-center items-center py-12 bg-gray-100">
+      <div className="max-w-screen-xl w-full">
         <div>
           <span>
-            <h3>Inventory Items</h3>
+            <h3>Daftar Komoditas Unggulan</h3>
           </span>
           <span>
             <Search
@@ -99,7 +99,7 @@ const ProductList = ({ products, isLoading }) => {
           {!isLoading && products.length === 0 ? (
             <p>-- No product found, please add a product...</p>
           ) : (
-            <table>
+            <table className="">
               <thead>
                 <tr>
                   <th>No</th>
@@ -113,39 +113,28 @@ const ProductList = ({ products, isLoading }) => {
 
               <tbody>
                 {currentItems.map((product, index) => {
-                  const { _id, name, category, price, quantity } = product;
+                  const { _id, name, location, landArea, production } = product;
                   return (
                     <tr key={_id}>
                       <td>{index + 1}</td>
                       <td>{shortenText(name, 16)}</td>
-                      <td>{category}</td>
-                      <td>
-                        {"Rp"}
-                        {price}
-                      </td>
-                      <td>{quantity}</td>
-                      <td>
-                        {"Rp"}
-                        {price * quantity}
-                      </td>
-                      <td className="icons">
+                      <td>{location}</td>
+                      <td>{landArea}</td>
+                      <td>{production}</td>
+                      <td className="flex flex-row">
                         <span>
                           <Link to={`/product-detail/${_id}`}>
-                            <IoEyeSharp
-                              size={20}
-                              color={`var(--color-purple)`}
-                            />
+                            <IoEyeSharp size={20} />
                           </Link>
                         </span>
                         <span>
                           <Link to={`/edit-product/${_id}`}>
-                            <MdEdit size={20} color={`var(--color-purple)`} />
+                            <MdEdit size={20} />
                           </Link>
                         </span>
                         <span>
                           <IoTrash
                             size={20}
-                            color={`var(--color-pink)`}
                             onClick={() => confirmDelete(_id)}
                           />
                         </span>
@@ -165,10 +154,10 @@ const ProductList = ({ products, isLoading }) => {
           pageCount={pageCount}
           previousLabel="Prev"
           renderOnZeroPageCount={null}
-          containerClassName="pagination"
-          pageLinkClassName="page-num"
-          previousLinkClassName="page-num-btn"
-          nextLinkClassName="page-num-btn"
+          containerClassName="flex flex-row justify-center items-center py-4 mt-4"
+          pageLinkClassName=" mx-4"
+          previousLinkClassName="px-4 py-2 rounded-lg bg-birumud text-white"
+          nextLinkClassName="px-4 py-2 rounded-lg bg-birumud text-white"
           activeLinkClassName="activePage"
         />
       </div>
