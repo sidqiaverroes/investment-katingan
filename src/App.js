@@ -13,6 +13,7 @@ import LandingPage from "./Pages/LandingPage";
 import Login from "./Pages/auth/Login";
 import Dashboard from "./Pages/admin/Dashboard";
 import ForgotPass from "./Pages/auth/ForgotPass";
+import ResetPass from "./Pages/auth/ResetPass";
 import Layout from "./components/layout/Layout";
 import AddProduct from "./Pages/admin/AddProduct";
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/KatinganAdmin" element={<Login />} />
         <Route path="/forgotpassword" element={<ForgotPass />} />
+        <Route path="/resetpassword/:resetToken" element={<ResetPass />} />
         <Route
           path="/dashboard"
           element={
