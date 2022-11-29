@@ -27,7 +27,7 @@ const Dashboard = () => {
   }, [isLoggedIn, isError, message, dispatch]);
 
   return (
-    <div>
+    <div className="h-screen bg-gray-200">
       <Header />
       <ProductList products={products} isLoading={isLoading} />
     </div>

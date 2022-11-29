@@ -79,35 +79,31 @@ const ProductList = ({ products, isLoading }) => {
   }, [products, search, dispatch]);
 
   return (
-    <div className="flex flex-col justify-center items-center py-12 bg-gray-100">
+    <div className="flex flex-col justify-center items-center py-12 ">
       <div className="max-w-screen-xl w-full">
         <div>
-          <span>
-            <h3>Daftar Komoditas Unggulan</h3>
-          </span>
-          <span>
-            <Search
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </span>
+          <h3 className="mb-8 font-semibold text-4xl text-gray-800">
+            Daftar Komoditas Unggulan
+          </h3>
+
+          <Search value={search} onChange={(e) => setSearch(e.target.value)} />
         </div>
 
         {isLoading}
 
-        <div className="table">
+        <div className="w-full text-left mt-8">
           {!isLoading && products.length === 0 ? (
-            <p>-- No product found, please add a product...</p>
+            <p>Belum ada komoditas, silakan tambah komoditas.</p>
           ) : (
-            <table className="">
+            <table className="w-full ">
               <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Name</th>
-                  <th>Location</th>
-                  <th>Land Area</th>
-                  <th>Production</th>
-                  <th>Action</th>
+                <tr className=" text-gray-500">
+                  <th className="py-2">No</th>
+                  <th className="py-2">Name</th>
+                  <th className="py-2">Location</th>
+                  <th className="py-2">Land Area</th>
+                  <th className="py-2">Production</th>
+                  <th className="py-2">Action</th>
                 </tr>
               </thead>
 
@@ -116,12 +112,12 @@ const ProductList = ({ products, isLoading }) => {
                   const { _id, name, location, landArea, production } = product;
                   return (
                     <tr key={_id}>
-                      <td>{index + 1}</td>
-                      <td>{shortenText(name, 16)}</td>
-                      <td>{location}</td>
-                      <td>{landArea}</td>
-                      <td>{production}</td>
-                      <td className="flex flex-row">
+                      <td className="py-1">{index + 1}</td>
+                      <td className="py-1">{shortenText(name, 16)}</td>
+                      <td className="py-1">{location}</td>
+                      <td className="py-1">{landArea}</td>
+                      <td className="py-1">{production}</td>
+                      <td className="flex flex-row gap-2 py-1">
                         <span>
                           <Link to={`/product-detail/${_id}`}>
                             <IoEyeSharp size={20} />
@@ -156,8 +152,8 @@ const ProductList = ({ products, isLoading }) => {
           renderOnZeroPageCount={null}
           containerClassName="flex flex-row justify-center items-center py-4 mt-4"
           pageLinkClassName=" mx-4"
-          previousLinkClassName="px-4 py-2 rounded-lg bg-birumud text-white"
-          nextLinkClassName="px-4 py-2 rounded-lg bg-birumud text-white"
+          previousLinkClassName="px-4 py-2 rounded-lg text-white bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg"
+          nextLinkClassName="px-4 py-2 rounded-lg text-white bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg"
           activeLinkClassName="activePage"
         />
       </div>
