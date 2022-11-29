@@ -82,9 +82,9 @@ const ProductList = ({ products, isLoading }) => {
     <div className="flex flex-col justify-center items-center py-12 ">
       <div className="max-w-screen-xl w-full">
         <div>
-          <h3 className="mb-8 font-semibold text-4xl text-gray-800">
+          <div className="mb-8 font-semibold text-4xl text-gray-800">
             Daftar Komoditas Unggulan
-          </h3>
+          </div>
 
           <Search value={search} onChange={(e) => setSearch(e.target.value)} />
         </div>

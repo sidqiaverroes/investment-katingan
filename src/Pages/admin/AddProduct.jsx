@@ -2,17 +2,15 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader";
-import ProductForm from "../../components/ProductForm";
-import {
-  createProduct,
-  selectIsLoading,
-} from "../../redux/features/product/productSlice";
+import ProductForm from "../../components/dashboard/ProductForm";
+import { createProduct, selectIsLoading } from "../../redux/productSlice";
+import { toast } from "react-toastify";
 
 const initialState = {
   name: "",
-  category: "",
-  quantity: "",
-  price: "",
+  location: "",
+  landArea: "",
+  production: "",
 };
 
 const AddProduct = () => {
@@ -21,11 +19,10 @@ const AddProduct = () => {
   const [product, setProduct] = useState(initialState);
   const [productImage, setProductImage] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
-  const [description, setDescription] = useState("");
 
   const isLoading = useSelector(selectIsLoading);
 
-  const { name, category, price, quantity } = product;
+  const { name, location, landArea, production } = product;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -46,34 +43,35 @@ const AddProduct = () => {
 
   const saveProduct = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", name);
-    // formData.append("sku", generateKSKU(category));
-    formData.append("category", category);
-    formData.append("quantity", Number(quantity));
-    formData.append("price", price);
-    formData.append("description", description);
-    formData.append("image", productImage);
+    if (!name || !location || !landArea || !production) {
+      return toast.error("All fields are required");
+    }
 
-    console.log(...formData);
+    const product = {
+      name,
+      location,
+      landArea,
+      production,
+    };
 
-    await dispatch(createProduct(formData));
-
-    navigate("/dashboard");
+    try {
+      await dispatch(createProduct(product));
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(error);
+      toast.error(error);
+    }
   };
 
   return (
     <div>
       {isLoading && <Loader />}
-      <h3 className="--mt">Add New Product</h3>
       <ProductForm
         product={product}
         productImage={productImage}
-        imagePreview={imagePreview}
-        description={description}
-        setDescription={setDescription}
+        // imagePreview={imagePreview}
         handleInputChange={handleInputChange}
-        handleImageChange={handleImageChange}
+        // handleImageChange={handleImageChange}
         saveProduct={saveProduct}
       />
     </div>

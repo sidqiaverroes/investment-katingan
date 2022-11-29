@@ -4,7 +4,6 @@ import useRedirectLoggedOutUser from "../../customHooks/useRedirect";
 import { selectIsLoggedIn } from "../../redux/authSlice";
 import { getProducts } from "../../redux/productSlice";
 
-import Header from "../../components/dashboard/Header";
 import ProductList from "../../components/dashboard/ProductList";
 
 const Dashboard = () => {
@@ -27,8 +26,7 @@ const Dashboard = () => {
   }, [isLoggedIn, isError, message, dispatch]);
 
   return (
-    <div className="h-screen bg-gray-200">
-      <Header />
+    <div>
       <ProductList products={products} isLoading={isLoading} />
     </div>
   );

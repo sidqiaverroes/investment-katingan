@@ -13,6 +13,8 @@ import LandingPage from "./Pages/LandingPage";
 import Login from "./Pages/auth/Login";
 import Dashboard from "./Pages/admin/Dashboard";
 import ForgotPass from "./Pages/auth/ForgotPass";
+import Layout from "./components/layout/Layout";
+import AddProduct from "./Pages/admin/AddProduct";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
@@ -35,8 +37,23 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/KatinganAdmin" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/forgotpassword" element={<ForgotPass />} />
+        <Route
+          path="/dashboard"
+          element={
+            <Layout>
+              <Dashboard />
+            </Layout>
+          }
+        />
+        <Route
+          path="/tambah-komoditas"
+          element={
+            <Layout>
+              <AddProduct />
+            </Layout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
