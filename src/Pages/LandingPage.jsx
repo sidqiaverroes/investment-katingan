@@ -4,7 +4,10 @@ import Sponsor from "../components/sponsor/Sponsor";
 import Explore from "../components/Explore";
 import Unggulan from "../components/Unggulan";
 import PetaPotensi from "../components/PetaPotensi";
+import Hubungi from "../components/Hubungi";
 import PeluangInvestasi from "../components/PeluangInvestasi";
+import Footer from "../components/Footer";
+import LatestNews from "../components/LatestNews";
 
 function LandingPage() {
   return (
@@ -15,8 +18,9 @@ function LandingPage() {
       <Unggulan />
       <PetaPotensi />
       <PeluangInvestasi />
-
-
+      <LatestNews />
+      <Hubungi />
+      <Footer />
     </>
   );
 }

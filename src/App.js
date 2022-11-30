@@ -19,6 +19,7 @@ import AddProduct from "./Pages/admin/AddProduct";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
+import "./index.css";
 
 function App() {
   const dispatch = useDispatch();
