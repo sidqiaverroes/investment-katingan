@@ -7,6 +7,16 @@
     height: 100vh;
 }
 
+.wrap {
+    box-sizing: border-box;
+  }
+#content {
+    box-sizing: border-box;
+  }
+
+.swiper-container {
+    max-height: 100%;
+  }
 body{
     font-family: 'Poppins';
 }

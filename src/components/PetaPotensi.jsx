@@ -7,9 +7,9 @@ function MapView() {
     return(
         <MapContainer 
         className="markercluster-map"
-        // center={[51.0, 19.0]}
-        zoom={4}
-        maxZoom={18}>
+        center={[51.0, 19.0]}
+        zoom={5}
+        maxZoom={20}>
 
             
             <TileLayer
