@@ -5,6 +5,7 @@ import Explore from "../components/Explore";
 import Unggulan from "../components/Unggulan";
 import PetaPotensi from "../components/PetaPotensi";
 import PeluangInvestasi from "../components/PeluangInvestasi";
+import LatestNews from "../components/LatestNews";
 
 function LandingPage() {
   return (
@@ -15,8 +16,7 @@ function LandingPage() {
       <Unggulan />
       <PetaPotensi />
       <PeluangInvestasi />
-
-
+      <LatestNews />
     </>
   );
 }
