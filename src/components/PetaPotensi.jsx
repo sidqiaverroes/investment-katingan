@@ -1,21 +1,22 @@
 import React from "react";
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { MapContainer, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
 import { Icon } from 'leaflet';
+import JsonData from '../Assets/Ilok_Kebun_Katingan.geojson'
 
 function MapView() {
     return(
         <MapContainer 
         className="markercluster-map"
         center={[51.0, 19.0]}
-        zoom={4}
-        maxZoom={18}>
+        zoom={5}
+        maxZoom={20}>
 
             
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
-
+            {/* <GeoJSON data={JsonData} /> */}
         </MapContainer>
     );
 }
