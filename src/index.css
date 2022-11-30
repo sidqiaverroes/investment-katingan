@@ -49,3 +49,12 @@
 body{
     font-family: 'Poppins';
 }
+
+h1{
+    font-weight: 900;
+    font-size: xx-large;
+}
+
+.fa-brands{
+  color: white
+}
