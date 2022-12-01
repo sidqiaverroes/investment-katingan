@@ -13,7 +13,7 @@ function Hero() {
           <div className="w-1/2 flex flex-col justify-center h-full gap-4 px-12">
             <h2 className="text-5xl font-bold text-birumud">
               Profil
-              <span className="text-black">&nbsp; Investasi Daerah</span>
+              <span className="text-gray-800">&nbsp; Investasi Daerah</span>
               &nbsp; <br /> Kabupaten Katingan
             </h2>
             <p>

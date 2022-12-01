@@ -55,6 +55,10 @@ h1{
     font-size: xx-large;
 }
 
+a:hover{
+  color: #40A2D5
+}
+
 .fa-brands{
   color: white
 }

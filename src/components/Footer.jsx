@@ -16,14 +16,14 @@ function Footer() {
             <a
               href="https://www.instagram.com/dpmptsp.katingankab/"
               target="_blank"
-              className="flex justify-center items-center w-10 h-10 bg-birumud rounded-md"
+              className="flex justify-center items-center w-10 h-10 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg "
             >
               <i class="fa-brands fa-instagram"></i>
             </a>
             <a
               href="https://www.facebook.com/dpmptsp.katingankab"
               target="_blank"
-              className="flex justify-center items-center w-10 h-10 bg-birumud rounded-md"
+              className="flex justify-center items-center w-10 h-10 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg "
             >
               <i class="fa-brands fa-facebook-f"></i>
             </a>
