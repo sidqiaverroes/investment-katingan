@@ -9,14 +9,14 @@ function Hero() {
       <Nav />
 
       <div className="w-full h-full bg-white flex items-center justify-center">
-        <div className="flex flex-row items-center justify-center max-w-screen-xl	h-auto mt-12">
-          <div className="w-1/2 flex flex-col justify-center h-full gap-4 px-12">
-            <h2 className="text-5xl font-bold text-birumud">
+        <div className="flex flex-row gap-12 items-center justify-center max-w-screen-lg	h-auto mt-12">
+          <div className="w-1/2 flex flex-col justify-center h-full gap-8">
+            <h2 className=" font-bold text-birumud">
               Profil
               <span className="text-gray-800">&nbsp; Investasi Daerah</span>
               &nbsp; <br /> Kabupaten Katingan
             </h2>
-            <p>
+            <p className="text-gray-500">
               Sistem Informasi Potensi Investasi Katingan (SIPIKAT) merupakan
               petunjuk bagi investor yang akan berinvestasi di Kabupaten
               Katingan

@@ -6,7 +6,7 @@ function NavItems() {
   const C = "Peluang Investasi";
   const D = "Tata Ruang Infrastruktur";
   return (
-    <div className="flex flex-row gap-6 mr-12 text-white">
+    <div className="flex flex-row gap-4 mr-8 text-white">
       <div className="flex items-center w-20 text-sm">{A}</div>
       <div className="flex items-center w-20 text-sm">{C}</div>
       <div className="flex items-center w-20 text-sm">{B}</div>

@@ -3,9 +3,9 @@ import NavItems from "./NavItems";
 
 function Nav() {
   return (
-    <div className="absolute flex justify-center items-center w-full h-auto z-10 mt-20">
-      <div className="flex flex-row justify-between w-full max-w-screen-xl">
-        <div className="flex items-center pl-12 text-birumud">
+    <div className="absolute top-16 flex justify-center items-center w-full h-auto z-10">
+      <div className="flex flex-row justify-between w-full max-w-screen-lg">
+        <div className="flex items-center text-birumud">
           SISTEM INFORMASI POTENSI INVESTASI KATINGAN
         </div>
         <NavItems />

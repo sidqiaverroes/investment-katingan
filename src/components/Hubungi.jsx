@@ -6,9 +6,11 @@ import Map from "../Assets/MapPlaceHolder.png";
 function Hubungi() {
   return (
     <div className="flex flex-col justify-center items-center w-full h-screen">
-      <div className="flex flex-col justify-center items-center max-w-screen-xl">
-        <h2 className="text-5xl font-bold text-center py-6">Hubungi Kami</h2>
-        <p className=" max-w-2xl pb-4 text-center">
+      <div className="flex flex-col justify-center items-center max-w-screen-lg">
+        <h2 className="text-5xl font-bold text-center text-gray-800 py-6">
+          Hubungi Kami
+        </h2>
+        <p className="max-w-2xl pb-4 text-center text-gray-500">
           Layanan perpesanan bagi calon investor untuk konsultansi dan agenda
           online meeting terkait potensi dan peluang di Katingan
         </p>

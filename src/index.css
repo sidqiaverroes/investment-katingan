@@ -55,6 +55,11 @@ h1{
     font-size: xx-large;
 }
 
+h2{
+  font-size: 2.75rem;
+  line-height: 3.0rem;
+}
+
 a:hover{
   color: #40A2D5
 }
