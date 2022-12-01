@@ -16,6 +16,7 @@ import ForgotPass from "./Pages/auth/ForgotPass";
 import ResetPass from "./Pages/auth/ResetPass";
 import Layout from "./components/layout/Layout";
 import AddProduct from "./Pages/admin/AddProduct";
+import "./index.css";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
