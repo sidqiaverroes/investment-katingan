@@ -11,6 +11,7 @@ import { MdEdit } from "react-icons/md";
 import { IoTrash } from "react-icons/io5";
 
 import Search from "./Search";
+import Loader from "../Loader";
 
 import {
   FILTER_PRODUCTS,
@@ -89,7 +90,7 @@ const ProductList = ({ products, isLoading }) => {
           <Search value={search} onChange={(e) => setSearch(e.target.value)} />
         </div>
 
-        {isLoading}
+        {isLoading && <Loader />}
 
         <div className="w-full text-left mt-8">
           {!isLoading && products.length === 0 ? (

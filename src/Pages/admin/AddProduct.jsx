@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader";
 import ProductForm from "../../components/dashboard/ProductForm";
-import { createProduct, selectIsLoading } from "../../redux/productSlice";
+import { createProduct } from "../../redux/productSlice";
 import { toast } from "react-toastify";
 
 const AddProduct = () => {
@@ -20,9 +20,7 @@ const AddProduct = () => {
   const [product, setProduct] = useState(initialState);
   const [productImage, setProductImage] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
-  const [Loading, setLoading] = useState(false);
-
-  const isLoading = useSelector(selectIsLoading);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { name, location, landArea, production } = product;
 
@@ -42,7 +40,7 @@ const AddProduct = () => {
       return toast.error("All fields are required");
     }
 
-    setLoading(true);
+    setIsLoading(true);
     //Handle Image Upload
     let imageURL;
     if (
@@ -77,9 +75,9 @@ const AddProduct = () => {
       await dispatch(createProduct(newProduct));
       navigate("/dashboard");
       console.log("Product successfully created");
-      setLoading(false);
+      setIsLoading(false);
     } catch (error) {
-      setLoading(false);
+      setIsLoading(false);
       console.log(error);
       toast.error(error);
     }
@@ -87,7 +85,7 @@ const AddProduct = () => {
 
   return (
     <div>
-      {Loading && <Loader />}
+      {isLoading && <Loader />}
       <ProductForm
         product={product}
         productImage={productImage}
