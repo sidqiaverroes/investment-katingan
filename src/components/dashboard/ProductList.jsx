@@ -59,7 +59,7 @@ const ProductList = ({ products, isLoading }) => {
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -112,28 +112,29 @@ const ProductList = ({ products, isLoading }) => {
                   const { _id, name, location, landArea, production } = product;
                   return (
                     <tr key={_id}>
-                      <td className="py-1">{index + 1}</td>
-                      <td className="py-1">{shortenText(name, 16)}</td>
-                      <td className="py-1">{location}</td>
-                      <td className="py-1">{landArea}</td>
-                      <td className="py-1">{production}</td>
-                      <td className="flex flex-row gap-2 py-1">
-                        <span>
+                      <td className="py-3">{index + 1}</td>
+                      <td className="py-3">{shortenText(name, 16)}</td>
+                      <td className="py-3">{location}</td>
+                      <td className="py-3">{landArea}</td>
+                      <td className="py-3">{production}</td>
+                      <td className="flex flex-row gap-2 py-3">
+                        {/* <span>
                           <Link to={`/product-detail/${_id}`}>
                             <IoEyeSharp size={20} />
                           </Link>
-                        </span>
-                        <span>
-                          <Link to={`/edit-product/${_id}`}>
-                            <MdEdit size={20} />
+                        </span> */}
+                        <button className="p-1 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg">
+                          <Link to={`/edit-komoditas/${_id}`}>
+                            <MdEdit size={20} color="white" />
                           </Link>
-                        </span>
-                        <span>
+                        </button>
+                        <button className="p-1 rounded-md cursor-pointer bg-orenmud hover:bg-orenmud2 shadow-md hover:shadow-lg ">
                           <IoTrash
                             size={20}
+                            color="white"
                             onClick={() => confirmDelete(_id)}
                           />
-                        </span>
+                        </button>
                       </td>
                     </tr>
                   );
