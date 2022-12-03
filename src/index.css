@@ -45,6 +45,10 @@
     -webkit-align-items: center;
     align-items: center;
   }
+
+html{
+  scroll-behavior: smooth;
+}
   
 body{
     font-family: 'Poppins';
@@ -67,3 +71,4 @@ a:hover{
 .fa-brands{
   color: white
 }
+

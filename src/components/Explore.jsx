@@ -7,7 +7,10 @@ import rect3 from "../Assets/Rectangle3.png";
 
 function Explore() {
   return (
-    <div className=" flex flex-col gap-20 items-center justify-center h-full w-full bg-white">
+    <div
+      id="profil-daerah"
+      className=" flex flex-col gap-20 items-center justify-center h-full w-full bg-white"
+    >
       <div className="flex flex-row gap-24 items-center justify-center max-w-screen-lg w-full h-auto mt-12">
         <div className="w-1/2 flex flex-col justify-start h-full">
           <div className="flex flex-col h-full justify-start gap-4 leading-normal">
