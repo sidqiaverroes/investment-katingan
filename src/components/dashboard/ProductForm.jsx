@@ -5,11 +5,11 @@ import noImage from "../../Assets/picplaceholder.jpg";
 
 const ProductForm = ({
   product,
-  productImage,
   imagePreview,
   handleInputChange,
   handleImageChange,
   saveProduct,
+  title,
 }) => {
   return (
     <div className="flex flex-col justify-center items-center py-12 ">
@@ -17,7 +17,7 @@ const ProductForm = ({
         <form onSubmit={saveProduct}>
           <div className="bg-gray-100 rounded-lg shadow p-20">
             <div className="mb-8 font-semibold text-4xl text-gray-800">
-              Tambah Komoditas Baru
+              {title}
             </div>
             <div className="flex flex-col gap-8">
               <div className="grid grid-cols-4 ">

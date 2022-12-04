@@ -93,6 +93,7 @@ const AddProduct = () => {
         handleInputChange={handleInputChange}
         handleImageChange={handleImageChange}
         saveProduct={saveProduct}
+        title="Tambah Komoditas"
       />
     </div>
   );
