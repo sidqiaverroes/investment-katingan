@@ -2,24 +2,24 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useRedirectLoggedOutUser from "../../customHooks/useRedirect";
 import { selectIsLoggedIn } from "../../redux/authSlice";
-import { getProducts } from "../../redux/productSlice";
+import { getInvests } from "../../redux/investSlice";
 
 import ProductList from "../../components/dashboard/ProductList";
 
-const Dashboard = () => {
+const Invest = () => {
   useRedirectLoggedOutUser("/KatinganAdmin");
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const { products, isLoading, isError, message } = useSelector(
-    (state) => state.product
+  const { invests, isLoading, isError, message } = useSelector(
+    (state) => state.invest
   );
 
-  console.log(products);
+  console.log(invests);
 
   useEffect(() => {
     if (isLoggedIn === true) {
-      dispatch(getProducts());
+      dispatch(getInvests());
     }
 
     if (isError) {
@@ -30,14 +30,14 @@ const Dashboard = () => {
   return (
     <div>
       <ProductList
-        products={products}
+        products={invests}
         isLoading={isLoading}
-        title="Daftar Komoditas Unggulan"
-        linkTo="/tambah-komoditas"
-        buttonPlaceholder="Tambah Komoditas"
+        title="Daftar Peluang Investasi"
+        linkTo="/invest/tambah-investasi"
+        buttonPlaceholder="Tambah Investasi"
       />
     </div>
   );
 };
 
-export default Dashboard;
+export default Invest;

@@ -1,12 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import { SET_LOGIN } from "./redux/authSlice";
-import { getLoginStatus } from "./services/authService";
 
 import NotFound from "./Pages/NotFound";
 import LandingPage from "./Pages/LandingPage";
@@ -17,22 +13,14 @@ import ResetPass from "./Pages/auth/ResetPass";
 import Layout from "./components/layout/Layout";
 import AddProduct from "./Pages/admin/AddProduct";
 import EditProduct from "./Pages/admin/EditProduct";
+import Invest from "./Pages/admin/Invest";
+import AddInvest from "./Pages/admin/AddInvest";
 import "./index.css";
 
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
 function App() {
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   async function loginStatus() {
-  //     const status = await getLoginStatus();
-  //     dispatch(SET_LOGIN(status));
-  //   }
-  //   loginStatus();
-  // }, [dispatch]);
-
   return (
     <BrowserRouter>
       <ToastContainer />
@@ -63,6 +51,22 @@ function App() {
           element={
             <Layout>
               <EditProduct />
+            </Layout>
+          }
+        />
+        <Route
+          path="/invest"
+          element={
+            <Layout>
+              <Invest />
+            </Layout>
+          }
+        />
+        <Route
+          path="/invest/tambah-investasi"
+          element={
+            <Layout>
+              <AddInvest />
             </Layout>
           }
         />

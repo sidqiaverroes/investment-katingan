@@ -19,7 +19,13 @@ import {
 } from "../../redux/filterSlice";
 import { deleteProduct, getProducts } from "../../redux/productSlice";
 
-const ProductList = ({ products, isLoading }) => {
+const ProductList = ({
+  products,
+  isLoading,
+  title,
+  linkTo,
+  buttonPlaceholder,
+}) => {
   const [search, setSearch] = useState("");
   const filteredProducts = useSelector(selectFilteredPoducts);
 
@@ -84,17 +90,22 @@ const ProductList = ({ products, isLoading }) => {
       <div className="max-w-screen-xl w-full">
         <div>
           <div className="mb-8 font-semibold text-4xl text-gray-800">
-            Daftar Komoditas Unggulan
+            {title}
           </div>
 
-          <Search value={search} onChange={(e) => setSearch(e.target.value)} />
+          <Search
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            linkTo={linkTo}
+            buttonPlaceholder={buttonPlaceholder}
+          />
         </div>
 
         {isLoading && <Loader />}
 
         <div className="w-full text-left mt-8">
           {!isLoading && products.length === 0 ? (
-            <p>Belum ada komoditas, silakan tambah komoditas.</p>
+            <p>Belum ada data, silakan tambah data.</p>
           ) : (
             <table className="w-full ">
               <thead>
