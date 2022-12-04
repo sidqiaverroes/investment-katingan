@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <div className="flex justify-center w-full h-auto py-20">
-      <div className="lg:grid lg:grid-cols-9 flex flex-col lg:items-start items-center justify-center gap-12 max-w-screen-xl w-full">
+      <div className="lg:grid lg:grid-cols-9 flex flex-col lg:items-start items-center justify-center gap-12 max-w-screen-lg w-full">
         <div className="lg:col-span-3 flex flex-col w-full lg:items-start items-center justify-center">
           <h3 className="text-birumud font-medium text-xl">
             DPMPTSP KABUPATEN KATINGAN
@@ -18,14 +18,14 @@ function Footer() {
               target="_blank"
               className="flex justify-center items-center w-10 h-10 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg "
             >
-              <i class="fa-brands fa-instagram"></i>
+              <i className="fa-brands fa-instagram"></i>
             </a>
             <a
               href="https://www.facebook.com/dpmptsp.katingankab"
               target="_blank"
               className="flex justify-center items-center w-10 h-10 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg "
             >
-              <i class="fa-brands fa-facebook-f"></i>
+              <i className="fa-brands fa-facebook-f"></i>
             </a>
           </div>
         </div>

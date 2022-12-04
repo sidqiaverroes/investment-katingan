@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import HeroImage from "../Assets/hero.png";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../redux/productSlice";
 
@@ -51,9 +50,10 @@ function Unggulan() {
             className="mySwiper"
           >
             {products.map((product) => {
-              const { name, location, landArea, production, image } = product;
+              const { _id, name, location, landArea, production, image } =
+                product;
               return (
-                <SwiperSlide>
+                <SwiperSlide key={_id}>
                   <div>
                     <div className="flex flex-col justify-center items-center rounded-md bg-gray-100 hover:bg-gray-200 gap-2 p-8 h-80 w-60 cursor-pointer">
                       <img
