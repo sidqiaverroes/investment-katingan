@@ -4,7 +4,7 @@ import useRedirectLoggedOutUser from "../../customHooks/useRedirect";
 import { selectIsLoggedIn } from "../../redux/authSlice";
 import { getInvests } from "../../redux/investSlice";
 
-import ProductList from "../../components/dashboard/ProductList";
+import InvestList from "../../components/dashboard/InvestList";
 
 const Invest = () => {
   useRedirectLoggedOutUser("/KatinganAdmin");
@@ -29,7 +29,7 @@ const Invest = () => {
 
   return (
     <div>
-      <ProductList
+      <InvestList
         products={invests}
         isLoading={isLoading}
         title="Daftar Peluang Investasi"

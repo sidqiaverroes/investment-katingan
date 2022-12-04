@@ -16,9 +16,10 @@ const initialState = {
 
 // Create New Product
 export const createInvest = createAsyncThunk(
-  "invest/create",
+  "invests/create",
   async (formData, thunkAPI) => {
     try {
+      console.log(formData);
       return await investService.createInvest(formData);
     } catch (error) {
       const message =
@@ -35,7 +36,7 @@ export const createInvest = createAsyncThunk(
 
 // Get all products
 export const getInvests = createAsyncThunk(
-  "invest/getAll",
+  "invests/getAll",
   async (_, thunkAPI) => {
     try {
       return await investService.getInvests();
@@ -54,7 +55,7 @@ export const getInvests = createAsyncThunk(
 
 // Delete a Product
 export const deleteInvest = createAsyncThunk(
-  "invest/delete",
+  "invests/delete",
   async (id, thunkAPI) => {
     try {
       return await investService.deleteInvest(id);
@@ -73,7 +74,7 @@ export const deleteInvest = createAsyncThunk(
 
 // Get a product
 export const getInvest = createAsyncThunk(
-  "invest/getInvest",
+  "invests/getInvest",
   async (id, thunkAPI) => {
     try {
       return await investService.getInvest(id);
@@ -91,7 +92,7 @@ export const getInvest = createAsyncThunk(
 );
 // Update product
 export const updateInvest = createAsyncThunk(
-  "invest/updateInvest",
+  "invests/updateInvest",
   async ({ id, formData }, thunkAPI) => {
     try {
       return await investService.updateInvest(id, formData);
@@ -112,46 +113,44 @@ const investSlice = createSlice({
   name: "invest",
   initialState,
   reducers: {
-    CALC_STORE_VALUE(state, action) {
-      const products = action.payload;
-      const array = [];
-      products.map((item) => {
-        const { price, quantity } = item;
-        const productValue = price * quantity;
-        return array.push(productValue);
-      });
-      const totalValue = array.reduce((a, b) => {
-        return a + b;
-      }, 0);
-      state.totalStoreValue = totalValue;
-    },
-    CALC_OUTOFSTOCK(state, action) {
-      const products = action.payload;
-      const array = [];
-      products.map((item) => {
-        const { quantity } = item;
-
-        return array.push(quantity);
-      });
-      let count = 0;
-      array.forEach((number) => {
-        if (number === 0 || number === "0") {
-          count += 1;
-        }
-      });
-      state.outOfStock = count;
-    },
-    CALC_CATEGORY(state, action) {
-      const products = action.payload;
-      const array = [];
-      products.map((item) => {
-        const { category } = item;
-
-        return array.push(category);
-      });
-      const uniqueCategory = [...new Set(array)];
-      state.category = uniqueCategory;
-    },
+    // CALC_STORE_VALUE(state, action) {
+    //   const products = action.payload;
+    //   const array = [];
+    //   products.map((item) => {
+    //     const { price, quantity } = item;
+    //     const productValue = price * quantity;
+    //     return array.push(productValue);
+    //   });
+    //   const totalValue = array.reduce((a, b) => {
+    //     return a + b;
+    //   }, 0);
+    //   state.totalStoreValue = totalValue;
+    // },
+    // CALC_OUTOFSTOCK(state, action) {
+    //   const products = action.payload;
+    //   const array = [];
+    //   products.map((item) => {
+    //     const { quantity } = item;
+    //     return array.push(quantity);
+    //   });
+    //   let count = 0;
+    //   array.forEach((number) => {
+    //     if (number === 0 || number === "0") {
+    //       count += 1;
+    //     }
+    //   });
+    //   state.outOfStock = count;
+    // },
+    // CALC_CATEGORY(state, action) {
+    //   const products = action.payload;
+    //   const array = [];
+    //   products.map((item) => {
+    //     const { category } = item;
+    //     return array.push(category);
+    //   });
+    //   const uniqueCategory = [...new Set(array)];
+    //   state.category = uniqueCategory;
+    // },
   },
   extraReducers: (builder) => {
     builder
@@ -163,8 +162,8 @@ const investSlice = createSlice({
         state.isSuccess = true;
         state.isError = false;
         console.log(action.payload);
-        state.products.push(action.payload);
-        toast.success("Product added successfully");
+        state.invests.push(action.payload);
+        toast.success("Investment added successfully");
       })
       .addCase(createInvest.rejected, (state, action) => {
         state.isLoading = false;
@@ -180,7 +179,7 @@ const investSlice = createSlice({
         state.isSuccess = true;
         state.isError = false;
         console.log(action.payload);
-        state.products = action.payload;
+        state.invests = action.payload;
       })
       .addCase(getInvests.rejected, (state, action) => {
         state.isLoading = false;
@@ -210,7 +209,7 @@ const investSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        state.product = action.payload;
+        state.invest = action.payload;
       })
       .addCase(getInvest.rejected, (state, action) => {
         state.isLoading = false;
@@ -239,10 +238,10 @@ const investSlice = createSlice({
 export const { CALC_STORE_VALUE, CALC_OUTOFSTOCK, CALC_CATEGORY } =
   investSlice.actions;
 
-export const selectIsLoading = (state) => state.product.isLoading;
-export const selectInvest = (state) => state.product.product;
-export const selectTotalStoreValue = (state) => state.product.totalStoreValue;
-export const selectOutOfStock = (state) => state.product.outOfStock;
-export const selectCategory = (state) => state.product.category;
+export const selectIsLoading = (state) => state.invest.isLoading;
+export const selectInvest = (state) => state.invest.invest;
+// export const selectTotalStoreValue = (state) => state.product.totalStoreValue;
+// export const selectOutOfStock = (state) => state.product.outOfStock;
+// export const selectCategory = (state) => state.product.category;
 
 export default investSlice.reducer;

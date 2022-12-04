@@ -4,24 +4,24 @@ import InputBar from "./InputBar";
 import noImage from "../../Assets/picplaceholder.jpg";
 
 const ProductForm = ({
-  product,
+  invest,
   imagePreview,
   handleInputChange,
   handleImageChange,
-  saveProduct,
+  saveInvest,
   title,
 }) => {
   return (
     <div className="flex flex-col justify-center items-center py-12 ">
       <div className="max-w-screen-xl w-full">
-        <form onSubmit={saveProduct}>
+        <form onSubmit={saveInvest}>
           <div className="bg-gray-100 rounded-lg shadow p-20">
             <div className="mb-8 font-semibold text-4xl text-gray-800">
               {title}
             </div>
             <div className="flex flex-col gap-8">
               <div className="grid grid-cols-4 ">
-                <label className="flex items-start justify-end mr-20 text-right">
+                <label className="flex items-start justify-end mr-20 pt-2 text-right">
                   Foto :
                 </label>
 
@@ -30,7 +30,7 @@ const ProductForm = ({
                     <img
                       src={imagePreview}
                       alt="productpreview"
-                      className=" h-80 w-80 rounded-lg object-cover"
+                      className="h-80 w-80 rounded-lg object-cover"
                     />
                   ) : (
                     <img
@@ -59,8 +59,8 @@ const ProductForm = ({
                 <InputBar
                   type="text"
                   name="name"
-                  placeholder="Nama komoditas"
-                  value={product?.name}
+                  placeholder="Nama investasi"
+                  value={invest?.name}
                   onChange={handleInputChange}
                 />
               </span>
@@ -72,41 +72,55 @@ const ProductForm = ({
                 <InputBar
                   type="text"
                   name="location"
-                  placeholder="Lokasi komoditas"
-                  value={product?.location}
+                  placeholder="Lokasi investasi"
+                  value={invest?.location}
                   onChange={handleInputChange}
                 />
               </span>
 
               <span className="grid grid-cols-4 w-full">
                 <label className="flex items-center justify-end mr-20 text-right">
-                  Luas Lahan :
+                  Biaya :
                 </label>
                 <InputBar
                   type="text"
-                  name="landArea"
-                  placeholder="Luas lahan komoditas"
-                  value={product?.landArea}
+                  name="cost"
+                  placeholder="Biaya investasi"
+                  value={invest?.cost}
                   onChange={handleInputChange}
                 />
               </span>
 
               <span className="grid grid-cols-4 w-full">
                 <label className="flex items-center justify-end mr-20 text-right">
-                  Produksi :
+                  Tautan Peta :
                 </label>
                 <InputBar
                   type="text"
-                  name="production"
-                  placeholder="Tingkat Produksi Komoditas"
-                  value={product?.production}
+                  name="mapLink"
+                  placeholder="Tautan peta investasi"
+                  value={invest?.mapLink}
                   onChange={handleInputChange}
+                />
+              </span>
+
+              <span className="grid grid-cols-4 w-full">
+                <label className="flex items-start justify-end mr-20 pt-2 text-right">
+                  Deskripsi (opsional) :
+                </label>
+                <textarea
+                  type="text"
+                  name="desc"
+                  placeholder="Deskripsi"
+                  rows="5"
+                  onChange={handleInputChange}
+                  className="col-span-3 px-4 py-2 max-h-36 text-black bg-white border-2 drop-shadow rounded-md focus:border-birumud focus:ring-birumud2 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </span>
             </div>
 
             <div className="flex justify-end pt-8 gap-4">
-              <Link to="/dashboard">
+              <Link to="/invest">
                 <button
                   type="button"
                   className="flex justify-center items-center w-auto gap-2 px-4 py-2 rounded-md text-birumud border border-birumud bg-white hover:bg-birumud hover:text-white shadow-md hover:shadow-lg"

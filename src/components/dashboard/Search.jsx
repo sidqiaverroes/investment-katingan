@@ -8,7 +8,7 @@ const Search = ({ value, onChange, linkTo, buttonPlaceholder }) => {
     <div className="grid grid-cols-4 w-full h-full space-x-4">
       <InputBar
         type="text"
-        placeholder="Search here"
+        placeholder="Cari di sini ..."
         value={value}
         onChange={onChange}
       />
