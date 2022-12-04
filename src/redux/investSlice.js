@@ -163,7 +163,7 @@ const investSlice = createSlice({
         state.isError = false;
         console.log(action.payload);
         state.invests.push(action.payload);
-        toast.success("Investment added successfully");
+        toast.success("Created successfully");
       })
       .addCase(createInvest.rejected, (state, action) => {
         state.isLoading = false;
@@ -194,7 +194,7 @@ const investSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        toast.success("Product deleted successfully");
+        toast.success("Deleted successfully");
       })
       .addCase(deleteInvest.rejected, (state, action) => {
         state.isLoading = false;
@@ -224,7 +224,7 @@ const investSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        toast.success("Product updated successfully");
+        toast.success("Updated successfully");
       })
       .addCase(updateInvest.rejected, (state, action) => {
         state.isLoading = false;

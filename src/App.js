@@ -15,6 +15,8 @@ import AddProduct from "./Pages/admin/AddProduct";
 import EditProduct from "./Pages/admin/EditProduct";
 import Invest from "./Pages/admin/Invest";
 import AddInvest from "./Pages/admin/AddInvest";
+import EditInvest from "./Pages/admin/EditInvest";
+
 import "./index.css";
 
 import axios from "axios";
@@ -67,6 +69,14 @@ function App() {
           element={
             <Layout>
               <AddInvest />
+            </Layout>
+          }
+        />
+        <Route
+          path="/invest/edit-investasi/:id"
+          element={
+            <Layout>
+              <EditInvest />
             </Layout>
           }
         />

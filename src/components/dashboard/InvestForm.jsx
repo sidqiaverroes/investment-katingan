@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import InputBar from "./InputBar";
 import noImage from "../../Assets/picplaceholder.jpg";
 
-const ProductForm = ({
+const InvestForm = ({
   invest,
   imagePreview,
   handleInputChange,
@@ -143,4 +143,4 @@ const ProductForm = ({
   );
 };
 
-export default ProductForm;
+export default InvestForm;

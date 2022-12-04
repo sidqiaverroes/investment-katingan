@@ -134,7 +134,7 @@ const InvestList = ({
                           </Link>
                         </span> */}
                         <button className="p-1 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg">
-                          <Link to={`/edit-komoditas/${_id}`}>
+                          <Link to={`/invest/edit-investasi/${_id}`}>
                             <MdEdit size={20} color="white" />
                           </Link>
                         </button>
