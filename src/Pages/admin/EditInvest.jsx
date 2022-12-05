@@ -3,52 +3,50 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
-import ProductForm from "../../components/dashboard/ProductForm";
+import InvestForm from "../../components/dashboard/InvestForm";
 import {
-  getProduct,
-  getProducts,
-  selectProduct,
-  updateProduct,
-} from "../../redux/productSlice";
+  getInvest,
+  getInvests,
+  selectInvest,
+  updateInvest,
+} from "../../redux/investSlice";
 
-const EditProduct = () => {
+const EditInvest = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const productEdit = useSelector(selectProduct);
+  const investEdit = useSelector(selectInvest);
 
-  const [product, setProduct] = useState(productEdit);
-  const [productImage, setProductImage] = useState("");
+  const [invest, setInvest] = useState(investEdit);
+  const [investImage, setInvestImage] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    dispatch(getProduct(id));
+    dispatch(getInvest(id));
     setIsLoading(false);
   }, [dispatch, id]);
 
   useEffect(() => {
     setIsLoading(true);
-    setProduct(productEdit);
-    setImagePreview(
-      productEdit && productEdit.image ? productEdit.image : null
-    );
+    setInvest(investEdit);
+    setImagePreview(investEdit && investEdit.image ? investEdit.image : null);
     setIsLoading(false);
-  }, [productEdit]);
+  }, [investEdit]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setProduct({ ...product, [name]: value });
+    setInvest({ ...invest, [name]: value });
   };
 
   const handleImageChange = (e) => {
-    setProductImage(e.target.files[0]);
+    setInvestImage(e.target.files[0]);
     setImagePreview(URL.createObjectURL(e.target.files[0]));
   };
 
-  const saveProduct = async (e) => {
+  const saveInvest = async (e) => {
     e.preventDefault();
 
     try {
@@ -56,13 +54,13 @@ const EditProduct = () => {
       //Handle Image Upload
       let imageURL;
       if (
-        productImage &&
-        (productImage.type === "image/jpeg" ||
-          productImage.type === "image/jpg" ||
-          productImage.type === "image/png")
+        investImage &&
+        (investImage.type === "image/jpeg" ||
+          investImage.type === "image/jpg" ||
+          investImage.type === "image/png")
       ) {
         const image = new FormData();
-        image.append("file", productImage);
+        image.append("file", investImage);
         image.append("cloud_name", "dyd6yggca");
         image.append("upload_preset", "pawpatrol10");
 
@@ -76,16 +74,17 @@ const EditProduct = () => {
       }
 
       const formData = {
-        name: product.name,
-        location: product.location,
-        landArea: product.landArea,
-        production: product.production,
-        image: productImage ? imageURL : product.image,
+        name: invest.name,
+        location: invest.location,
+        cost: invest.cost,
+        mapLink: invest.mapLink,
+        desc: invest.desc,
+        image: investImage ? imageURL : invest.image,
       };
 
-      await dispatch(updateProduct({ id, formData }));
-      await dispatch(getProducts());
-      navigate("/dashboard");
+      await dispatch(updateInvest({ id, formData }));
+      await dispatch(getInvests());
+      navigate("/invest");
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -97,17 +96,17 @@ const EditProduct = () => {
   return (
     <div>
       {isLoading && <Loader />}
-      <ProductForm
-        product={product}
-        productImage={productImage}
+      <InvestForm
+        invest={invest}
+        investImage={investImage}
         imagePreview={imagePreview}
         handleInputChange={handleInputChange}
         handleImageChange={handleImageChange}
-        saveProduct={saveProduct}
-        title="Sunting Komoditas"
+        saveInvest={saveInvest}
+        title="Sunting Investasi"
       />
     </div>
   );
 };
 
-export default EditProduct;
+export default EditInvest;

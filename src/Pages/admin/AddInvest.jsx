@@ -2,55 +2,57 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader";
-import ProductForm from "../../components/dashboard/ProductForm";
-import { createProduct } from "../../redux/productSlice";
+import InvestForm from "../../components/dashboard/InvestForm";
+import { createInvest } from "../../redux/investSlice";
 import { toast } from "react-toastify";
 
-const AddProduct = () => {
+const AddInvest = () => {
   const initialState = {
     name: "",
     location: "",
-    landArea: "",
-    production: "",
+    cost: "",
+    mapLink: "",
+    desc: "",
     image: "",
   };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [product, setProduct] = useState(initialState);
-  const [productImage, setProductImage] = useState("");
+  const [invest, setInvest] = useState(initialState);
+  const [investImage, setInvestImage] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { name, location, landArea, production } = product;
+  const { name, location, cost, mapLink } = invest;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setProduct({ ...product, [name]: value });
+    setInvest({ ...invest, [name]: value });
   };
 
   const handleImageChange = (e) => {
-    setProductImage(e.target.files[0]);
+    setInvestImage(e.target.files[0]);
     setImagePreview(URL.createObjectURL(e.target.files[0]));
   };
 
-  const saveProduct = async (e) => {
+  const saveInvest = async (e) => {
     e.preventDefault();
-    if (!name || !location || !landArea || !production) {
-      return toast.error("All fields are required");
+
+    if (!name || !location || !cost || !mapLink) {
+      return toast.error("Please fill all the required fields");
     }
 
     setIsLoading(true);
     //Handle Image Upload
     let imageURL;
     if (
-      productImage &&
-      (productImage.type === "image/jpeg" ||
-        productImage.type === "image/jpg" ||
-        productImage.type === "image/png")
+      investImage &&
+      (investImage.type === "image/jpeg" ||
+        investImage.type === "image/jpg" ||
+        investImage.type === "image/png")
     ) {
       const image = new FormData();
-      image.append("file", productImage);
+      image.append("file", investImage);
       image.append("cloud_name", "dyd6yggca");
       image.append("upload_preset", "pawpatrol10");
 
@@ -63,18 +65,19 @@ const AddProduct = () => {
       imageURL = imgData.url.toString();
     }
 
-    const newProduct = {
-      name: product.name,
-      location: product.location,
-      landArea: product.landArea,
-      production: product.production,
+    const newInvest = {
+      name: invest.name,
+      location: invest.location,
+      cost: invest.cost,
+      mapLink: invest.mapLink,
+      desc: invest.desc,
       image: imageURL,
     };
 
     try {
-      await dispatch(createProduct(newProduct));
-      navigate("/dashboard");
-      console.log("Product successfully created");
+      await dispatch(createInvest(newInvest));
+      navigate("/invest");
+      console.log("Investment successfully created");
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -86,17 +89,17 @@ const AddProduct = () => {
   return (
     <div>
       {isLoading && <Loader />}
-      <ProductForm
-        product={product}
-        productImage={productImage}
+      <InvestForm
+        product={invest}
+        productImage={investImage}
         imagePreview={imagePreview}
         handleInputChange={handleInputChange}
         handleImageChange={handleImageChange}
-        saveProduct={saveProduct}
-        title="Tambah Komoditas"
+        saveInvest={saveInvest}
+        title="Tambah Peluang Investasi"
       />
     </div>
   );
 };
 
-export default AddProduct;
+export default AddInvest;

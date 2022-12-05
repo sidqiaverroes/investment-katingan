@@ -17,19 +17,19 @@ import {
   FILTER_PRODUCTS,
   selectFilteredPoducts,
 } from "../../redux/filterSlice";
-import { deleteProduct, getProducts } from "../../redux/productSlice";
+import { deleteInvest, getInvests } from "../../redux/investSlice";
 
-const ProductList = ({
+const InvestList = ({
   products,
   isLoading,
   title,
   linkTo,
   buttonPlaceholder,
 }) => {
+  const dispatch = useDispatch();
+
   const [search, setSearch] = useState("");
   const filteredProducts = useSelector(selectFilteredPoducts);
-
-  const dispatch = useDispatch();
 
   const shortenText = (text, n) => {
     if (text.length > n) {
@@ -39,10 +39,10 @@ const ProductList = ({
     return text;
   };
 
-  const delProduct = async (id) => {
+  const delInvest = async (id) => {
     console.log(id);
-    await dispatch(deleteProduct(id));
-    await dispatch(getProducts());
+    await dispatch(deleteInvest(id));
+    await dispatch(getInvests());
   };
 
   const confirmDelete = (id, name) => {
@@ -63,7 +63,7 @@ const ProductList = ({
               </button>
               <button
                 onClick={() => {
-                  delProduct(id);
+                  delInvest(id);
                   onClose();
                 }}
                 className="px-8 py-2 rounded-md text-white bg-orenmud hover:bg-orenmud2 shadow-md hover:shadow-lg"
@@ -115,9 +115,7 @@ const ProductList = ({
             buttonPlaceholder={buttonPlaceholder}
           />
         </div>
-
         {isLoading && <SpinnerImg />}
-
         <div className="w-full text-left mt-8">
           {!isLoading && products.length === 0 ? (
             <p>Belum ada data, silakan tambah data.</p>
@@ -128,22 +126,20 @@ const ProductList = ({
                   <th className="py-2">No</th>
                   <th className="py-2">Name</th>
                   <th className="py-2">Location</th>
-                  <th className="py-2">Land Area</th>
-                  <th className="py-2">Production</th>
+                  <th className="py-2">Cost</th>
                   <th className="py-2">Action</th>
                 </tr>
               </thead>
 
               <tbody>
                 {currentItems.map((product, index) => {
-                  const { _id, name, location, landArea, production } = product;
+                  const { _id, name, location, cost } = product;
                   return (
                     <tr key={_id}>
                       <td className="py-3">{index + 1}</td>
                       <td className="py-3">{shortenText(name, 16)}</td>
                       <td className="py-3">{location}</td>
-                      <td className="py-3">{landArea}</td>
-                      <td className="py-3">{production}</td>
+                      <td className="py-3">{cost}</td>
                       <td className="flex flex-row gap-2 py-3">
                         {/* <span>
                           <Link to={`/product-detail/${_id}`}>
@@ -151,7 +147,7 @@ const ProductList = ({
                           </Link>
                         </span> */}
                         <button className="p-1 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg">
-                          <Link to={`/komoditas/edit-komoditas/${_id}`}>
+                          <Link to={`/invest/edit-investasi/${_id}`}>
                             <MdEdit size={20} color="white" />
                           </Link>
                         </button>
@@ -189,4 +185,4 @@ const ProductList = ({
   );
 };
 
-export default ProductList;
+export default InvestList;

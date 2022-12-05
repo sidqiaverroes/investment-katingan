@@ -72,3 +72,9 @@ a:hover{
   color: white
 }
 
+.activeNav{
+  color: #40A2D5;
+  font-weight: 500;
+  border-bottom: 1px solid #40A2D5;
+}
+

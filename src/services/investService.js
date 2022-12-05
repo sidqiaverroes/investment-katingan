@@ -2,43 +2,43 @@ import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
-const API_URL = `${BACKEND_URL}/api/products/`;
+const API_URL = `${BACKEND_URL}/api/invest/`;
 
 // Create New Product
-const createProduct = async (formData) => {
+const createInvest = async (formData) => {
   const response = await axios.post(API_URL, formData);
   console.log(response);
   return response.data;
 };
 
 // Get all products
-const getProducts = async () => {
+const getInvests = async () => {
   const response = await axios.get(API_URL);
   return response.data;
 };
 
 // Delete a Product
-const deleteProduct = async (id) => {
+const deleteInvest = async (id) => {
   const response = await axios.delete(API_URL + id);
   return response.data;
 };
 // Get a Product
-const getProduct = async (id) => {
+const getInvest = async (id) => {
   const response = await axios.get(API_URL + id);
   return response.data;
 };
 // Update Product
-const updateProduct = async (id, formData) => {
+const updateInvest = async (id, formData) => {
   const response = await axios.patch(`${API_URL}${id}`, formData);
   return response.data;
 };
 
-const productService = {
-  createProduct,
-  getProducts,
-  getProduct,
-  deleteProduct,
-  updateProduct,
+const investService = {
+  createInvest,
+  getInvests,
+  getInvest,
+  deleteInvest,
+  updateInvest,
 };
 
-export default productService;
+export default investService;
