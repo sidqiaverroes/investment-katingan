@@ -11,7 +11,7 @@ import { MdEdit } from "react-icons/md";
 import { IoTrash } from "react-icons/io5";
 
 import Search from "./Search";
-import Loader from "../Loader";
+import { SpinnerImg } from "../Loader";
 
 import {
   FILTER_PRODUCTS,
@@ -26,10 +26,10 @@ const InvestList = ({
   linkTo,
   buttonPlaceholder,
 }) => {
+  const dispatch = useDispatch();
+
   const [search, setSearch] = useState("");
   const filteredProducts = useSelector(selectFilteredPoducts);
-
-  const dispatch = useDispatch();
 
   const shortenText = (text, n) => {
     if (text.length > n) {
@@ -45,20 +45,35 @@ const InvestList = ({
     await dispatch(getInvests());
   };
 
-  const confirmDelete = (id) => {
+  const confirmDelete = (id, name) => {
     confirmAlert({
-      title: "Delete Product",
-      message: "Are you sure you want to delete this product.",
-      buttons: [
-        {
-          label: "Delete",
-          onClick: () => delInvest(id),
-        },
-        {
-          label: "Cancel",
-          // onClick: () => alert('Click No')
-        },
-      ],
+      customUI: ({ onClose }) => {
+        return (
+          <div className="flex flex-col items-center justify-center border border-gray-300 py-12 rounded-lg shadow-2xl text-center">
+            <p className="w-3/4 text-gray-800 text-2xl">
+              Apakah Anda yakin untuk menghapus{" "}
+              <span className="text-birumud font-semibold">{name}</span>?
+            </p>
+            <span className="flex flex-row items-center justify-center gap-4 mt-6">
+              <button
+                onClick={onClose}
+                className="px-8 py-2 rounded-md text-birumud border border-birumud hover:bg-birumud shadow-md hover:shadow-lg"
+              >
+                Batal
+              </button>
+              <button
+                onClick={() => {
+                  delInvest(id);
+                  onClose();
+                }}
+                className="px-8 py-2 rounded-md text-white bg-orenmud hover:bg-orenmud2 shadow-md hover:shadow-lg"
+              >
+                Hapus
+              </button>
+            </span>
+          </div>
+        );
+      },
     });
   };
 
@@ -100,9 +115,7 @@ const InvestList = ({
             buttonPlaceholder={buttonPlaceholder}
           />
         </div>
-
-        {isLoading && <Loader />}
-
+        {isLoading && <SpinnerImg />}
         <div className="w-full text-left mt-8">
           {!isLoading && products.length === 0 ? (
             <p>Belum ada data, silakan tambah data.</p>
@@ -142,7 +155,7 @@ const InvestList = ({
                           <IoTrash
                             size={20}
                             color="white"
-                            onClick={() => confirmDelete(_id)}
+                            onClick={() => confirmDelete(_id, name)}
                           />
                         </button>
                       </td>
