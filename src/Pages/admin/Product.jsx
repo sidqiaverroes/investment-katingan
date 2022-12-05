@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useRedirectLoggedOutUser from "../../customHooks/useRedirect";
 import { selectIsLoggedIn } from "../../redux/authSlice";
 import { getProducts } from "../../redux/productSlice";
 
 import ProductList from "../../components/dashboard/ProductList";
 
 const Product = () => {
-  useRedirectLoggedOutUser("/KatinganAdmin");
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -15,7 +13,7 @@ const Product = () => {
     (state) => state.product
   );
 
-  console.log(products);
+  //   console.log(products);
 
   useEffect(() => {
     if (isLoggedIn === true) {
