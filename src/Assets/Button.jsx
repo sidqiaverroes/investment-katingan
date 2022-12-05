@@ -1,8 +1,10 @@
 import React from "react";
 
-function CustButtonPrimer(props) {
+function CustButtonPrimer(props, {handleClick}) {
   return (
-    <button className="inline-flex justify-center items-center px-12 py-3 text-white bg-birumud rounded-tl-3xl rounded-br-custom hover:bg-birumud2 shadow-md hover:shadow-lg">
+    <button className="inline-flex justify-center items-center px-12 py-3 text-white bg-birumud rounded-tl-3xl rounded-br-custom hover:bg-birumud2 shadow-md hover:shadow-lg"
+        onClick={handleClick}
+    >
       {props.text}
     </button>
   );
@@ -17,7 +19,7 @@ function CustButtonSec(props) {
 }
 
 export { CustButtonPrimer, CustButtonSec };
-export default CustButtonPrimer;
+// export default CustButtonPrimer;
 // export default CustButtonSec;
 
 {
