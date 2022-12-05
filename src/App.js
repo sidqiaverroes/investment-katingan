@@ -11,6 +11,7 @@ import Dashboard from "./Pages/admin/Dashboard";
 import ForgotPass from "./Pages/auth/ForgotPass";
 import ResetPass from "./Pages/auth/ResetPass";
 import Layout from "./components/layout/Layout";
+import Product from "./Pages/admin/Product";
 import AddProduct from "./Pages/admin/AddProduct";
 import EditProduct from "./Pages/admin/EditProduct";
 import Invest from "./Pages/admin/Invest";
@@ -41,7 +42,15 @@ function App() {
           }
         />
         <Route
-          path="/tambah-komoditas"
+          path="/komoditas"
+          element={
+            <Layout>
+              <Product />
+            </Layout>
+          }
+        />
+        <Route
+          path="/komoditas/tambah-komoditas"
           element={
             <Layout>
               <AddProduct />
@@ -49,7 +58,7 @@ function App() {
           }
         />
         <Route
-          path="/edit-komoditas/:id"
+          path="/komoditas/edit-komoditas/:id"
           element={
             <Layout>
               <EditProduct />

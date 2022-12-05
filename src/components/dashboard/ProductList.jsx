@@ -136,7 +136,7 @@ const ProductList = ({
                           </Link>
                         </span> */}
                         <button className="p-1 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg">
-                          <Link to={`/edit-komoditas/${_id}`}>
+                          <Link to={`/komoditas/edit-komoditas/${_id}`}>
                             <MdEdit size={20} color="white" />
                           </Link>
                         </button>

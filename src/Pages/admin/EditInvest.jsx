@@ -103,7 +103,7 @@ const EditInvest = () => {
         handleInputChange={handleInputChange}
         handleImageChange={handleImageChange}
         saveInvest={saveInvest}
-        title="Sunting Komoditas"
+        title="Sunting Investasi"
       />
     </div>
   );

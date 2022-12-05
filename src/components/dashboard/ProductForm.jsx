@@ -106,7 +106,7 @@ const ProductForm = ({
             </div>
 
             <div className="flex justify-end pt-8 gap-4">
-              <Link to="/dashboard">
+              <Link to="/komoditas">
                 <button
                   type="button"
                   className="flex justify-center items-center w-auto gap-2 px-4 py-2 rounded-md text-birumud border border-birumud bg-white hover:bg-birumud hover:text-white shadow-md hover:shadow-lg"
