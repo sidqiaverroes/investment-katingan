@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useRedirectLoggedOutUser from "../../customHooks/useRedirect";
 import { selectIsLoggedIn } from "../../redux/authSlice";
 import { getInvests } from "../../redux/investSlice";
 
 import InvestList from "../../components/dashboard/InvestList";
 
 const Invest = () => {
-  useRedirectLoggedOutUser("/KatinganAdmin");
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -15,7 +13,7 @@ const Invest = () => {
     (state) => state.invest
   );
 
-  console.log(invests);
+  //   console.log(invests);
 
   useEffect(() => {
     if (isLoggedIn === true) {
