@@ -4,7 +4,7 @@ function NavItems() {
   const A = "Profil Daerah";
   const B = "Potensi Investasi";
   const C = "Peluang Investasi";
-  const D = "Tata Ruang Infrastruktur";
+  const D = "Peta";
   return (
     <div className="flex flex-row gap-4 mr-8 text-white">
       <a

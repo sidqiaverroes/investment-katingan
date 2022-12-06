@@ -8,6 +8,7 @@ import Hubungi from "../components/Hubungi";
 import PeluangInvestasi from "../components/PeluangInvestasi";
 import Footer from "../components/Footer";
 import LatestNews from "../components/LatestNews";
+import ChartPage from "../components/ChartPage";
 
 function LandingPage() {
   return (
@@ -16,6 +17,7 @@ function LandingPage() {
       <Sponsor />
       <Explore />
       <Unggulan />
+      <ChartPage />
       <PetaPotensi />
       <PeluangInvestasi />
       <LatestNews />
