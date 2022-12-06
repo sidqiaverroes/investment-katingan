@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import NotFound from "./Pages/NotFound";
 import LandingPage from "./Pages/LandingPage";
 import Login from "./Pages/auth/Login";
-import Dashboard from "./Pages/admin/Dashboard";
+ import Dashboard from "./Pages/admin/Dashboard";
 import ForgotPass from "./Pages/auth/ForgotPass";
 import ResetPass from "./Pages/auth/ResetPass";
 import Layout from "./components/layout/Layout";
