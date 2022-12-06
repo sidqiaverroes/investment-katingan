@@ -25,10 +25,6 @@ function Hubungi() {
     setMail({ ...mail, [name]: value });
   };
 
-  const resetForm = () => {
-    setMail(initialState);
-  };
-
   const sendEmail = async (e) => {
     e.preventDefault();
 
@@ -47,15 +43,12 @@ function Hubungi() {
       pesan,
     };
 
-    console.log(mailData);
-
     try {
       const response = await axios.post(
         `${BACKEND_URL}/api/contactus`,
         mailData
       );
-      console.log(response.data);
-      resetForm();
+      e.target.reset();
       toast.success(response.data.message);
     } catch (error) {
       toast.error(error.message);

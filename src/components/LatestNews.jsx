@@ -39,14 +39,14 @@ function LatestNews() {
           className="mySwiper"
         >
           <SwiperSlide>
-            <div className="group block relative cursor-pointer h-full w-full">
+            <div className="group block  cursor-pointer h-full w-full">
               <img
                 className="border-gray-100 shadow-sm h-96 rounded-lg object-cover"
                 src={News1}
                 alt="image slide 1"
               />
-              <div className="absolute bottom-0 h-1/2 w-full bg-gradient-to-t from-birumud "></div>
-              <div className="absolute bottom-0 px-6 py-6">
+              <div className=" bottom-0 h-1/2 w-full bg-gradient-to-t from-birumud "></div>
+              <div className=" bottom-0 px-6 py-6">
                 <h1 className="text-white text-lg font-bold">
                   Pembangunan Proyek Infrastruktur Daerah
                 </h1>
@@ -58,14 +58,14 @@ function LatestNews() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="group block relative cursor-pointer h-full w-full">
+            <div className="group block  cursor-pointer h-full w-full">
               <img
                 className="border-gray-100 shadow-sm h-96 rounded-lg object-cover"
                 src={News2}
                 alt="image slide 1"
               />
-              <div className="absolute bottom-0 h-1/2 w-full bg-gradient-to-t from-birumud "></div>
-              <div className="absolute bottom-0 px-6 py-6">
+              <div className=" bottom-0 h-1/2 w-full bg-gradient-to-t from-birumud "></div>
+              <div className=" bottom-0 px-6 py-6">
                 <h1 className="text-white text-lg font-bold">
                   Pembangunan Proyek Infrastruktur Daerah
                 </h1>
@@ -77,14 +77,14 @@ function LatestNews() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="group block relative cursor-pointer h-full w-full">
+            <div className="group block  cursor-pointer h-full w-full">
               <img
                 className="border-gray-100 shadow-sm h-96 rounded-lg object-cover"
                 src={News3}
                 alt="image slide 1"
               />
-              <div className="absolute bottom-0 h-1/2 w-full bg-gradient-to-t from-birumud "></div>
-              <div className="absolute bottom-0 px-6 py-6">
+              <div className=" bottom-0 h-1/2 w-full bg-gradient-to-t from-birumud "></div>
+              <div className=" bottom-0 px-6 py-6">
                 <h1 className="text-white text-lg font-bold">
                   Pembangunan Proyek Infrastruktur Daerah
                 </h1>
