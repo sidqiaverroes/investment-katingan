@@ -5,12 +5,17 @@ import { selectName } from "../../redux/authSlice";
 const Dashboard = () => {
   //Adjust Name Capitalization
   const name = useSelector(selectName);
-  const words = name.split(" ");
-  let finalName = words
-    .map((word) => {
-      return word[0].toUpperCase() + word.substring(1);
-    })
-    .join(" ");
+
+  let finalName;
+
+  if (name) {
+    const words = name.split(" ");
+    finalName = words
+      .map((word) => {
+        return word[0].toUpperCase() + word.substring(1);
+      })
+      .join(" ");
+  }
 
   return (
     <div className="flex justify-center items-center w-full h-full">

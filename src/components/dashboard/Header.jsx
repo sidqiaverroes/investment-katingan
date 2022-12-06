@@ -19,7 +19,8 @@ function Header() {
   const logout = async () => {
     setIsLoading(true);
     await logoutUser();
-    await dispatch(SET_LOGIN(false));
+    localStorage.removeItem("name");
+    dispatch(SET_LOGIN(false));
     setIsLoading(false);
     navigate("/KatinganAdmin");
   };

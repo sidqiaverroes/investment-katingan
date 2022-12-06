@@ -32,8 +32,7 @@ export const loginUser = async (userData) => {
 // Logout User
 export const logoutUser = async () => {
   try {
-    const response = await axios.get(`${BACKEND_URL}/api/users/logout`);
-    console.log(response);
+    const response = await axios.post(`${BACKEND_URL}/api/users/logout`);
     if (response.status === 200) {
       toast.success("Log out success");
     }
