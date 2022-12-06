@@ -1,24 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useSelector, useDispatch } from "react-redux";
+import { getInvests } from "../redux/investSlice";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { Autoplay, Pagination, Navigation, Scrollbar } from "swiper";
-
-import img1 from "../Assets/Img-2.png";
-import img2 from "../Assets/Img-3.png";
-import img3 from "../Assets/Img-4.png";
-import img4 from "../Assets/Img-5.png";
+import { Autoplay, Pagination, Navigation } from "swiper";
 
 import Modal from "./Modal";
-import { CustButtonPrimer, CustButtonSec } from "../Assets/Button";
 
 function PeluangInvestasi() {
-  const [showModal, setShowModal] = useState(false);
+  const initialState = {
+    id: "",
+    name: "",
+    location: "",
+    cost: "",
+    mapLink: "",
+    desc: "",
+    image: "",
+  };
 
-  const toggleModal = () => {
+  const dispatch = useDispatch();
+  const { invests, isError, message } = useSelector((state) => state.invest);
+  const [showModal, setShowModal] = useState(false);
+  const [detail, setDetail] = useState(initialState);
+
+  useEffect(() => {
+    dispatch(getInvests());
+
+    if (isError) {
+      console.log(message);
+    }
+  }, [dispatch, isError, message]);
+
+  const showDetail = (index) => {
+    setDetail(invests[index]);
     setShowModal(true);
   };
 
@@ -27,7 +45,7 @@ function PeluangInvestasi() {
       id="peluang"
       className="flex flex-col items-center justify-center h-auto w-full bg-white"
     >
-      {showModal && <Modal setShowModal={setShowModal} />}
+      {showModal && <Modal setShowModal={setShowModal} detail={detail} />}
       <div className="justify-center items-center max-w-screen-xl h-1/4">
         <h2 className="text-5xl font-bold text-center">Peluang Investasi</h2>
         <p className="p-4 text-center text-lg font-normal">
@@ -52,97 +70,32 @@ function PeluangInvestasi() {
             modules={[Autoplay, Pagination, Navigation]}
             className="mySwiper"
           >
-            <SwiperSlide>
-              <div className=" group block w-72 h-72 relative overflow-visible rounded-lg cursor-pointer">
-                <img
-                  className="border-gray-100 shadow-sm w-72 h-72"
-                  src={img1}
-                  alt="image slide 1"
-                />
-                <div className="absolute bottom-0 px-6 py-4">
-                  <h1 className="text-white text-lg font-bold">
-                    Proyek Infrastruktur Daerah
-                  </h1>
-                  <p className="text-white font-light">
-                    Prospektur Proyek Investasi
-                  </p>
-                  <div className="items-center justify-center py-2 hidden group-hover:block ">
-                    <button onClick={toggleModal}>
-                      <CustButtonPrimer text="Detail"></CustButtonPrimer>
-                    </button>
+            {invests.map((invest, index) => {
+              const { _id, name, location, image } = invest;
+              return (
+                <SwiperSlide key={_id}>
+                  <div className=" group block w-72 h-72 relative overflow-visible rounded-lg cursor-pointer">
+                    <img
+                      className="border-gray-100 shadow-sm w-72 h-72"
+                      src={image}
+                      alt="img"
+                    />
+                    <div className="absolute bottom-0 px-6 py-4">
+                      <h1 className="text-white text-lg font-bold">{name}</h1>
+                      <p className="text-white font-light">{location}</p>
+                      <div className="items-center justify-center py-2 hidden group-hover:block ">
+                        <button
+                          onClick={() => showDetail(index)}
+                          className="bg-birumud"
+                        >
+                          Detail
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className=" group block w-72 h-72 relative overflow-visible rounded-lg cursor-pointer">
-                <img
-                  className="border-gray-100 shadow-sm w-72 h-72"
-                  src={img2}
-                  alt="image slide 1"
-                />
-                <div className="absolute bottom-0 px-6 py-4">
-                  <h1 className="text-white text-lg font-bold">
-                    Proyek Infrastruktur Daerah
-                  </h1>
-                  <p className="text-white font-light">
-                    Prospektur Proyek Investasi
-                  </p>
-                  <div className="items-center justify-center py-2 hidden group-hover:block">
-                    <button onClick={toggleModal}>
-                      <CustButtonPrimer text="Detail"></CustButtonPrimer>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className=" group block w-72 h-72 relative overflow-visible rounded-lg cursor-pointer">
-                <img
-                  className="border-gray-100 shadow-sm w-72 h-72"
-                  src={img3}
-                  alt="image slide 1"
-                />
-                <div className="absolute bottom-0 px-6 py-4">
-                  <h1 className="text-white text-lg font-bold">
-                    Proyek Infrastruktur Daerah
-                  </h1>
-                  <p className="text-white font-light">
-                    Prospektur Proyek Investasi
-                  </p>
-                  <div className="items-center justify-center py-2 hidden group-hover:block">
-                    <button onClick={toggleModal}>
-                      <CustButtonPrimer text="Detail"></CustButtonPrimer>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className=" group block w-72 h-72 relative overflow-visible rounded-lg cursor-pointer">
-                <img
-                  className="border-gray-100 shadow-sm w-72 h-72"
-                  src={img4}
-                  alt="image slide 1"
-                />
-                <div className="absolute bottom-0 px-6 py-4">
-                  <h1 className="text-white text-lg font-bold">
-                    Proyek Infrastruktur Daerah
-                  </h1>
-                  <p className="text-white font-light">
-                    Prospektur Proyek Investasi
-                  </p>
-                  <div className="items-center justify-center py-2 hidden group-hover:block">
-                    <button onClick={toggleModal}>
-                      <CustButtonPrimer text="Detail"></CustButtonPrimer>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </div>
       </div>
