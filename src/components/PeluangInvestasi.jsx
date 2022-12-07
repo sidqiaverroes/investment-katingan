@@ -77,11 +77,7 @@ function PeluangInvestasi() {
           return (
             <SwiperSlide key={_id}>
               <div className="group block w-72 h-80 relative overflow-hidden rounded-lg cursor-pointer my-16 border border-gray-300 shadow-lg">
-                <img
-                  className="border-gray-100 shadow-sm w-72 h-72 object-cover"
-                  src={image}
-                  alt="img"
-                />
+                <img className="w-72 h-72 object-cover" src={image} alt="img" />
                 <div className="absolute flex flex-col items-center justify-center w-full bottom-0 px-6 py-6 bg-white">
                   <h1 className="text-lg text-birumud font-bold">{name}</h1>
                   <p className="text-gray-500 font-light">{location}</p>

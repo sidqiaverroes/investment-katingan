@@ -5,9 +5,9 @@ import News1 from "../Assets/News1.png";
 
 const LatestNews = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full pb-12">
-      <div className="flex items-center justify-center h-full max-w-screen-lg pt-8">
-        <h1 className="text-5xl text-gray-800">Latest News</h1>
+    <div className="flex flex-col gap-2 items-center justify-center w-full h-full py-16">
+      <div className="flex items-center justify-center h-full max-w-screen-lg">
+        <h1 className="text-5xl text-gray-800">Katingan News</h1>
       </div>
       <Swiper
         loop={true}
