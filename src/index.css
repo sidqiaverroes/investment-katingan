@@ -78,3 +78,6 @@ a:hover{
   border-bottom: 1px solid #40A2D5;
 }
 
+.mapHeight{
+  height: 500px;
+}
