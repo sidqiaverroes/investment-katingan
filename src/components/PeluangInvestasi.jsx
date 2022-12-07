@@ -47,7 +47,7 @@ function PeluangInvestasi() {
     >
       {showModal && <Modal setShowModal={setShowModal} detail={detail} />}
       <div className="justify-center items-center max-w-screen-lg h-1/4">
-        <h2 className="text-5xl font-bold text-center text-gray-800">
+        <h2 className=" font-bold text-center text-gray-800">
           Peluang Investasi
         </h2>
         <p className="p-4 text-center text-lg font-normal text-gray-500">

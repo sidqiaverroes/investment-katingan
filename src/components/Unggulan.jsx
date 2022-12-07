@@ -25,7 +25,7 @@ function Unggulan() {
   return (
     <div className="flex flex-col items-center justify-center h-full w-full bg-white py-20">
       <div className="justify-center items-center max-w-screen-lg h-auto mt-20">
-        <h1 className="flex justify-center items-center text-5xl text-gray-800 font-semibold px-4">
+        <h1 className="flex justify-center items-center text-gray-800 font-semibold px-4">
           Komoditas Unggulan Kami
         </h1>
         <p className="p-4 text-center text-lg font-normal text-gray-500">

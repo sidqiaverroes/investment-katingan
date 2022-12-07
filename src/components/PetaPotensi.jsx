@@ -5,14 +5,18 @@ import JsonData from "../Assets/Ilok_Kebun_Katingan.geojson";
 
 function PetaUnggulan() {
   return (
-    <div id="peta" className="flex justify-center items-center w-full h-full">
-      <div className="flex flex-col justify-center items-center w-full max-w-screen-lg">
-        <h1 className="text-birumud">Peta Potensi</h1>
+    <div
+      id="peta"
+      className="flex justify-center items-center w-full h-full py-16"
+    >
+      <div className="flex flex-col gap-6 justify-center items-center w-full max-w-screen-lg">
+        <h1 className="text-birumud ">Peta Potensi</h1>
         <span className=" overflow-hidden w-full mapHeight rounded-md">
           <MapContainer
             center={[51.505, -0.09]}
             zoom={13}
             scrollWheelZoom={false}
+            maxZoom={20}
           >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
