@@ -43,7 +43,7 @@ function PeluangInvestasi() {
   return (
     <div
       id="peluang"
-      className="flex flex-col items-center justify-center h-full w-full bg-white py-32"
+      className="flex flex-col items-center justify-center h-full w-full bg-white py-16"
     >
       {showModal && <Modal setShowModal={setShowModal} detail={detail} />}
       <div className="justify-center items-center max-w-screen-lg h-1/4">
