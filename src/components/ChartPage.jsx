@@ -30,7 +30,7 @@ function ChartPage() {
       },
       title: {
         display: true,
-        text: "Chart.js Line Chart",
+        text: "PERKEMBANGAN REALISASI INVESTASI KABUPATEN KATINGAN",
       },
     },
   };
