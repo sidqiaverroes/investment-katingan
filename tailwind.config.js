@@ -28,6 +28,9 @@ module.exports = {
       padding: {
         nav: "200px",
       },
+      width: {
+        newsCard: "800px",
+      },
     },
   },
   variants: {},
