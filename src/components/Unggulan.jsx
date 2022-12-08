@@ -25,10 +25,10 @@ function Unggulan() {
   return (
     <div
       id="komoditas-unggulan"
-      className="flex flex-col items-center justify-center h-full w-full bg-white py-20"
+      className="flex flex-col items-center justify-center h-full w-full bg-white py-32"
     >
-      <div className="justify-center items-center max-w-screen-lg h-auto mt-20">
-        <h1 className="flex justify-center items-center text-gray-800 font-semibold px-4">
+      <div className="justify-center items-center max-w-screen-lg h-auto">
+        <h1 className="flex justify-center items-center text-gray-800 font-semibold ">
           Komoditas Unggulan Kami
         </h1>
         <p className="p-4 text-center text-lg font-normal text-gray-500">
@@ -36,7 +36,7 @@ function Unggulan() {
           tinggi sebagai potensi yang dapat diangkat untuk dijadikan peluang
           investasi dan usaha
         </p>
-        <div className="justify-center items-center w-full h-auto mt-12 py-2">
+        <div className="justify-center items-center w-full h-auto mt-4 py-2">
           <Swiper
             loop={true}
             slidesPerView={4}
