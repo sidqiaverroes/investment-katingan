@@ -60,7 +60,7 @@ const NewsForm = ({
                   type="text"
                   name="title"
                   placeholder="Judul Berita"
-                  value={news?.name}
+                  value={news?.title}
                   onChange={handleInputChange}
                 />
               </span>
@@ -73,6 +73,7 @@ const NewsForm = ({
                   type="text"
                   name="desc"
                   placeholder="Deskripsi"
+                  value={news?.desc}
                   rows="10"
                   onChange={handleInputChange}
                   className="col-span-3 px-4 py-2 max-h-60 text-black bg-white border-2 drop-shadow rounded-md focus:border-birumud focus:ring-birumud2 focus:outline-none focus:ring focus:ring-opacity-40"
