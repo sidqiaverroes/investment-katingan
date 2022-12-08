@@ -80,7 +80,10 @@ function Hubungi() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-full h-full py-32">
+    <div
+      id="hubungi"
+      className="flex flex-col justify-center items-center w-full h-full py-32"
+    >
       <div className="flex flex-col justify-center items-center max-w-screen-lg">
         <h2 className="text-5xl font-bold text-center text-gray-800 py-6">
           Hubungi Kami
