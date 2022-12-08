@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "./Nav";
 import HeroImage from "../Assets/hero.png";
-import { CustButtonPrimer, CustButtonSec } from "../Assets/Button";
+import { CustButtonPrimer, CustButtonSec } from "./Button";
 
 function Hero() {
   return (

@@ -6,7 +6,7 @@ import { validateEmail } from "../services/authService";
 
 import ReCAPTCHA from "react-google-recaptcha";
 
-import { CustButtonPrimer, DisabledCustButton } from "../Assets/Button";
+import { CustButtonPrimer, DisabledCustButton } from "../components/Button";
 import InputBar from "./dashboard/InputBar";
 import Map from "../Assets/MapPlaceHolder.png";
 

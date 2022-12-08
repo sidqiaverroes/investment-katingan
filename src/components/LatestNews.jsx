@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 
 import { getNews } from "../redux/newsSlice";
-import { CustButtonPrimer } from "../Assets/Button";
+import { CustButtonPrimer } from "./Button";
 
 const LatestNews = () => {
   const dispatch = useDispatch();
@@ -78,7 +78,7 @@ const LatestNews = () => {
         className="flex h-full w-full max-w-screen-lg"
       >
         {newses.map((news, index) => {
-          const { _id, title, desc, createdAt, editedAt, image } = news;
+          const { _id, title, desc, editedAt, image } = news;
           return (
             <SwiperSlide key={_id}>
               <div className="group flex flex-row w-newsCard h-96 relative overflow-hidden rounded-lg cursor-pointer my-16 border border-gray-300 shadow-lg">
