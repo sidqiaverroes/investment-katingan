@@ -45,6 +45,14 @@ function Hubungi() {
       return toast.error("Please enter a valid email");
     }
 
+    if (!nama || !email || !subjek || !pesan) {
+      return toast.error("Please fill all the fields");
+    }
+
+    if (!isVerified) {
+      return toast.error("Please fill the captcha");
+    }
+
     const mailData = {
       nama,
       email,
