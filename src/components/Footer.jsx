@@ -3,8 +3,8 @@ import React from "react";
 function Footer() {
   return (
     <div className="flex justify-center w-full h-auto py-20">
-      <div className="lg:grid lg:grid-cols-9 flex flex-col lg:items-start items-center justify-center gap-12 max-w-screen-lg w-full">
-        <div className="lg:col-span-3 flex flex-col w-full lg:items-start items-center justify-center">
+      <div className="lg:grid lg:grid-cols-10 flex flex-col lg:items-start items-center justify-center gap-12 max-w-screen-lg w-full">
+        <div className="lg:col-span-4 flex flex-col w-full lg:items-start items-center justify-center">
           <h3 className="text-birumud font-medium text-xl">
             DPMPTSP KABUPATEN KATINGAN
           </h3>

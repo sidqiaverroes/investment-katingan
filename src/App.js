@@ -22,6 +22,8 @@ import Invest from "./Pages/admin/Invest";
 import AddInvest from "./Pages/admin/AddInvest";
 import EditInvest from "./Pages/admin/EditInvest";
 import News from "./Pages/admin/News";
+import AddNews from "./Pages/admin/AddNews";
+import EditNews from "./Pages/admin/EditNews";
 
 import "./index.css";
 
@@ -101,6 +103,22 @@ function App() {
           element={
             <Layout>
               <News />
+            </Layout>
+          }
+        />
+        <Route
+          path="/news/tambah-news"
+          element={
+            <Layout>
+              <AddNews />
+            </Layout>
+          }
+        />
+        <Route
+          path="/news/edit-news/:id"
+          element={
+            <Layout>
+              <EditNews />
             </Layout>
           }
         />
