@@ -32,6 +32,7 @@ function Header() {
         <div className="flex items-center font-semibold text-birumud">
           KATINGAN ADMIN DASHBOARD
         </div>
+
         <div className="flex items-center gap-8">
           <Link to="/dashboard">
             <span
@@ -52,7 +53,13 @@ function Header() {
               Investasi
             </span>
           </Link>
+          <Link to="/news">
+            <span className={splitLocation[1] === "news" ? "activeNav" : ""}>
+              News
+            </span>
+          </Link>
         </div>
+
         <button
           onClick={logout}
           className="inline-flex justify-center items-center px-12 py-3 text-birumud border border-birumud bg-white rounded-tl-custom rounded-br-custom hover:bg-birumud hover:text-white shadow-md hover:shadow-lg"

@@ -9,9 +9,6 @@ const initialState = {
   isSuccess: false,
   isLoading: false,
   message: "",
-  totalStoreValue: 0,
-  outOfStock: 0,
-  category: [],
 };
 
 // Create New Product
@@ -39,7 +36,7 @@ export const getNews = createAsyncThunk(
   "newses/getAll",
   async (_, thunkAPI) => {
     try {
-      return await newsService.getOneNews();
+      return await newsService.getNews();
     } catch (error) {
       const message =
         (error.response &&

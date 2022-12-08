@@ -18,10 +18,18 @@ const filterSlice = createSlice({
 
       state.filteredProducts = tempProducts;
     },
+    FILTER_NEWS(state, action) {
+      const { products, search } = action.payload;
+      const tempProducts = products.filter((product) =>
+        product.title.toLowerCase().includes(search.toLowerCase())
+      );
+
+      state.filteredProducts = tempProducts;
+    },
   },
 });
 
-export const { FILTER_PRODUCTS } = filterSlice.actions;
+export const { FILTER_PRODUCTS, FILTER_NEWS } = filterSlice.actions;
 
 export const selectFilteredPoducts = (state) => state.filter.filteredProducts;
 

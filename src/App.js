@@ -21,6 +21,7 @@ import EditProduct from "./Pages/admin/EditProduct";
 import Invest from "./Pages/admin/Invest";
 import AddInvest from "./Pages/admin/AddInvest";
 import EditInvest from "./Pages/admin/EditInvest";
+import News from "./Pages/admin/News";
 
 import "./index.css";
 
@@ -69,6 +70,7 @@ function App() {
             </Layout>
           }
         />
+
         <Route
           path="/invest"
           element={
@@ -90,6 +92,15 @@ function App() {
           element={
             <Layout>
               <EditInvest />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/news"
+          element={
+            <Layout>
+              <News />
             </Layout>
           }
         />
