@@ -14,7 +14,7 @@ function NavItems() {
         {A}
       </a>
       <a
-        href="#peta"
+        href="#komoditas-unggulan"
         className="flex items-center w-20 text-sm hover:text-gray-300"
       >
         {B}

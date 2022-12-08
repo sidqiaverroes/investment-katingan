@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { BACKEND_URL } from "../services/authService";
-
 import { validateEmail } from "../services/authService";
+
+import ReCAPTCHA from "react-google-recaptcha";
 
 import { CustButtonPrimer } from "../Assets/Button";
 import InputBar from "./dashboard/InputBar";
@@ -19,6 +20,9 @@ const initialState = {
 function Hubungi() {
   const [mail, setMail] = useState(initialState);
   const { nama, email, subjek, pesan } = mail;
+  const [isVerified, setIsVerified] = useState(false);
+
+  const captcha = useRef(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,6 +40,10 @@ function Hubungi() {
       return toast.error("Please enter a valid email");
     }
 
+    if (!isVerified) {
+      return toast.info("Please fill the recaptcha");
+    }
+
     const mailData = {
       nama,
       email,
@@ -49,10 +57,17 @@ function Hubungi() {
         mailData
       );
       e.target.reset();
+
+      setIsVerified(false);
+      captcha.current.reset();
       toast.success(response.data.message);
     } catch (error) {
       toast.error(error.message);
     }
+  };
+
+  const handleCaptcha = (value) => {
+    setIsVerified(true);
   };
 
   return (
@@ -94,13 +109,20 @@ function Hubungi() {
                 onChange={handleInputChange}
                 className="col-span-3 px-4 py-2 max-h-36 text-black bg-white border-2 drop-shadow rounded-md focus:border-birumud focus:ring-birumud2 focus:outline-none focus:ring focus:ring-opacity-40"
               />
+
+              <ReCAPTCHA
+                ref={captcha}
+                sitekey={`${process.env.REACT_APP_RECAPTCHA_KEY}`}
+                onChange={handleCaptcha}
+              />
+
               <span className="grid w-56">
                 <CustButtonPrimer text="Kirim Pesan" />
               </span>
             </form>
           </div>
           <div className="col-span-3">
-            <img src={Map} alt="Map" className="max-h-96" />
+            <img src={Map} alt="Map" className="h-auto" />
           </div>
         </div>
       </div>
