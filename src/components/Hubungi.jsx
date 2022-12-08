@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { BACKEND_URL } from "../services/authService";
@@ -6,7 +6,7 @@ import { validateEmail } from "../services/authService";
 
 import ReCAPTCHA from "react-google-recaptcha";
 
-import { CustButtonPrimer } from "../Assets/Button";
+import { CustButtonPrimer, DisabledCustButton } from "../Assets/Button";
 import InputBar from "./dashboard/InputBar";
 import Map from "../Assets/MapPlaceHolder.png";
 
@@ -21,8 +21,17 @@ function Hubungi() {
   const [mail, setMail] = useState(initialState);
   const { nama, email, subjek, pesan } = mail;
   const [isVerified, setIsVerified] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
 
   const captcha = useRef(null);
+
+  useEffect(() => {
+    if (!nama || !email || !subjek || !pesan || !isVerified) {
+      setIsFilled(false);
+    } else {
+      setIsFilled(true);
+    }
+  }, [nama, email, subjek, pesan, isVerified]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,16 +41,8 @@ function Hubungi() {
   const sendEmail = async (e) => {
     e.preventDefault();
 
-    if (!nama || !email || !subjek || !pesan) {
-      return toast.error("All fields are required");
-    }
-
     if (!validateEmail(email)) {
       return toast.error("Please enter a valid email");
-    }
-
-    if (!isVerified) {
-      return toast.info("Please fill the recaptcha");
     }
 
     const mailData = {
@@ -117,7 +118,11 @@ function Hubungi() {
               />
 
               <span className="grid w-56">
-                <CustButtonPrimer text="Kirim Pesan" />
+                {isFilled ? (
+                  <CustButtonPrimer text="Kirim Pesan" />
+                ) : (
+                  <DisabledCustButton text="Kirim Pesan" />
+                )}
               </span>
             </form>
           </div>
