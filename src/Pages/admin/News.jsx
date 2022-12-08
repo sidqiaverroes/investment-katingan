@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/authSlice";
-import { getInvests } from "../../redux/investSlice";
+import { getNews } from "../../redux/newsSlice";
 
-import InvestList from "../../components/dashboard/InvestList";
+import NewsList from "../../components/dashboard/NewsList";
 
-const Invest = () => {
+const News = () => {
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const { invests, isLoading, isError, message } = useSelector(
-    (state) => state.invest
+  const { newses, isLoading, isError, message } = useSelector(
+    (state) => state.news
   );
 
   useEffect(() => {
     if (isLoggedIn === true) {
-      dispatch(getInvests());
+      dispatch(getNews());
     }
 
     if (isError) {
@@ -25,15 +25,15 @@ const Invest = () => {
 
   return (
     <div>
-      <InvestList
-        products={invests}
+      <NewsList
+        products={newses}
         isLoading={isLoading}
-        title="Daftar Peluang Investasi"
-        linkTo="/invest/tambah-investasi"
-        buttonPlaceholder="Tambah Investasi"
+        title="Daftar Berita"
+        linkTo="/news/tambah-news"
+        buttonPlaceholder="Tambah Berita"
       />
     </div>
   );
 };
 
-export default Invest;
+export default News;
