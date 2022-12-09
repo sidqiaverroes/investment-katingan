@@ -30,6 +30,10 @@ module.exports = {
       },
       width: {
         newsCard: "800px",
+        modalCardMd: "500px",
+      },
+      height: {
+        modalCardMd: "680px",
       },
     },
   },

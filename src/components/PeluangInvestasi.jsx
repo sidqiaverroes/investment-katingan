@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 
 import { Autoplay, Pagination, Navigation } from "swiper";
 
-import Modal from "./Modal";
+import { Modal } from "./Modal";
 
 function PeluangInvestasi() {
   const initialState = {
@@ -42,7 +42,7 @@ function PeluangInvestasi() {
 
   return (
     <div
-      id="peluang"
+      id="peluang-investasi"
       className="flex flex-col items-center justify-center h-full w-full bg-white py-16"
     >
       {showModal && <Modal setShowModal={setShowModal} detail={detail} />}
@@ -62,7 +62,7 @@ function PeluangInvestasi() {
         spaceBetween={0}
         slidesPerView={3}
         autoplay={{
-          delay: 3000,
+          delay: 5000,
           disableOnInteraction: true,
         }}
         navigation={true}
@@ -84,7 +84,7 @@ function PeluangInvestasi() {
                   <div className="items-center justify-center py-2 hidden group-hover:block ">
                     <button
                       onClick={() => showDetail(index)}
-                      className="inline-flex justify-center items-center px-12 py-3 text-white bg-birumud rounded-tl-3xl rounded-br-custom hover:bg-birumud2 shadow-md hover:shadow-lg"
+                      className="inline-flex justify-center items-center px-12 py-3 text-birumud border border-birumud bg-white rounded-tl-custom rounded-br-custom hover:bg-birumud hover:text-white shadow-md hover:shadow-lg"
                     >
                       Detail
                     </button>

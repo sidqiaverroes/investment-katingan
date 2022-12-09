@@ -1,5 +1,5 @@
 import React from "react";
-import { CustButtonPrimer, CustButtonSec } from "../Assets/Button";
+import { CustButtonPrimer } from "../components/Button";
 import exploreImg from "../Assets/explore.png";
 import rect1 from "../Assets/Rectangle1.png";
 import rect2 from "../Assets/Rectangle2.png";

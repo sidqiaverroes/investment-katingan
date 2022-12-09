@@ -1,11 +1,10 @@
 import React from "react";
-import { MapContainer, Marker, Popup, TileLayer, GeoJSON } from "react-leaflet";
-import JsonData from "../Assets/Ilok_Kebun_Katingan.geojson";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 function PetaUnggulan() {
   return (
     <div
-      id="peta"
+      id="peta-potensi"
       className="flex justify-center items-center w-full h-full py-16"
     >
       <div className="flex flex-col gap-6 justify-center items-center w-full max-w-screen-lg">
