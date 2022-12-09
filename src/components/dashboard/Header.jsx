@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { SET_LOGIN } from "../../redux/authSlice";
+import { SET_LOGIN, selectUser } from "../../redux/authSlice";
 import { logoutUser } from "../../services/authService";
 
 import Loader from "../Loader";
@@ -11,6 +11,9 @@ function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+
+  const user = useSelector(selectUser);
+  const { email } = user;
 
   const location = useLocation();
   const { pathname } = location;
@@ -60,12 +63,33 @@ function Header() {
           </Link>
         </div>
 
-        <button
-          onClick={logout}
-          className="inline-flex justify-center items-center px-12 py-3 text-birumud border border-birumud bg-white rounded-tl-custom rounded-br-custom hover:bg-birumud hover:text-white shadow-md hover:shadow-lg"
-        >
-          Log Out
-        </button>
+        <div className="dropdown inline-block relative">
+          <button className=" text-gray-800 font-medium py-2 px-4 rounded flex flex-row gap-2 items-center">
+            <span>{email}</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+
+          <ul className="dropdown-menu absolute hidden text-gray-800 pt-1 shadow-md w-full">
+            <li class="">
+              <button
+                class="flex flex-row gap-2 justify-start items-center rounded-t w-full bg-white hover:bg-birumud border hover:text-white border-gray-300 py-2 px-4 whitespace-no-wrap"
+                href="#"
+              >
+                <i class="fa-regular fa-user"></i>
+                Profile
+              </button>
+            </li>
+            <li className="">
+              <button
+                className="flex flex-row gap-2 justify-start items-center rounded-b w-full bg-white hover:bg-birumud border hover:text-white border-gray-300  py-2 px-4 whitespace-no-wrap"
+                onClick={logout}
+              >
+                <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                Log out
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

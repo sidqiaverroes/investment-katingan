@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { SET_LOGIN, SET_NAME } from "../../redux/authSlice";
+import { SET_LOGIN, SET_NAME, SET_USER } from "../../redux/authSlice";
 import { loginUser, validateEmail } from "../../services/authService";
 import HeroImage from "../../Assets/hero.png";
 import Loader from "../../components/Loader";
@@ -42,9 +42,9 @@ const Login = () => {
     setIsLoading(true);
     try {
       const data = await loginUser(userData);
-      // console.log(data);
       await dispatch(SET_LOGIN(true));
       await dispatch(SET_NAME(data.name));
+      await dispatch(SET_USER(data));
       navigate("/dashboard");
       setIsLoading(false);
     } catch (error) {
