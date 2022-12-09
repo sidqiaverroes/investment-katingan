@@ -1,104 +1,132 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper";
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import { getNews } from "../redux/newsSlice";
+import { NewsModal } from "./Modal";
 
-import "../index.css";
+const initialState = {
+  id: "",
+  title: "",
+  desc: "",
+  createdAt: "",
+  editedAt: "",
+  image: "",
+};
 
-import { Autoplay, Pagination, Navigation, Scrollbar } from "swiper";
+const LatestNews = () => {
+  const dispatch = useDispatch();
+  const { newses, isError, message } = useSelector((state) => state.news);
+  const [showModal, setShowModal] = useState(false);
+  const [detail, setDetail] = useState(initialState);
 
-import News1 from "../Assets/News1.png";
-import News2 from "../Assets/News2.png";
-import News3 from "../Assets/News3.png";
+  useEffect(() => {
+    dispatch(getNews());
 
-function LatestNews() {
+    if (isError) {
+      console.log(message);
+    }
+  }, [isError, message, dispatch]);
+
+  const shortenText = (text, n) => {
+    if (text.length > n) {
+      const shortenedText = text.substring(0, n).concat("...");
+      return shortenedText;
+    }
+    return text;
+  };
+
+  const formatDate = (date, type) => {
+    const month = [
+      "Undefined",
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember",
+    ];
+
+    const string = date.split("T");
+
+    const rawDate = string[0].split("-");
+    const finalDate = rawDate[2] + " " + month[rawDate[1]] + " " + rawDate[0];
+
+    const rawTime = string[1].split(".");
+    const finalTime = rawTime[0];
+
+    if (type === "date") {
+      return finalDate;
+    }
+    if (type === "time") {
+      return finalTime;
+    }
+  };
+
+  const showDetail = (index) => {
+    setDetail(newses[index]);
+    setShowModal(true);
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center w-full bg-white mt-10">
-      <div className="flex justify-center items-center w-screen h-auto">
-        <h2 className="text-5xl font-bold text-left px-20 justify-center items-center">
-          Latest News
-        </h2>
+    <div className="flex flex-col gap-2 items-center justify-center w-full h-full py-16">
+      {showModal && <NewsModal setShowModal={setShowModal} detail={detail} />}
+      <div className="flex items-center justify-center h-full max-w-screen-lg">
+        <h1 className="text-5xl text-gray-800">Katingan News</h1>
       </div>
-      <div className="justify-center items-center w-screen h-auto mt-10">
-        <Swiper
-          direction={"horizontal"}
-          spaceBetween={40}
-          slidesPerView={3}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          navigation={false}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <div className="group block relative cursor-pointer h-full w-full">
-              <img
-                className="border-gray-100 shadow-sm h-96 rounded-lg object-cover"
-                src={News1}
-                alt="image slide 1"
-              />
-              <div className="absolute bottom-0 h-1/2 w-full bg-gradient-to-t from-birumud "></div>
-              <div className="absolute bottom-0 px-6 py-6">
-                <h1 className="text-white text-lg font-bold">
-                  Pembangunan Proyek Infrastruktur Daerah
-                </h1>
-                <p className="text-white font-light">
-                  Prospektur Proyek Investasi
-                </p>
-                <div className="items-center justify-center py-2 hidden group-hover:block"></div>
+
+      <Swiper
+        loop={false}
+        spaceBetween={10}
+        navigation={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Navigation, Pagination]}
+        grabCursor={true}
+        className="flex h-full w-full max-w-screen-lg"
+      >
+        {newses.map((news, index) => {
+          const { _id, title, desc, editedAt, image } = news;
+          return (
+            <SwiperSlide key={_id}>
+              <div className="group flex flex-row w-newsCard h-96 relative overflow-hidden rounded-lg cursor-pointer my-16 border border-gray-300 shadow-lg">
+                <img
+                  src={image}
+                  alt="product images"
+                  className="w-3/5 h-auto object-cover"
+                />
+                <div className="flex flex-col gap-2 items-start w-2/5 p-8">
+                  <h3 className="font-normal text-sm text-left text-birumud mb-3">
+                    {formatDate(editedAt, "date")}
+                  </h3>
+                  <h3 className="h-fit  font-bold text-left text-lg text-gray-800">
+                    {shortenText(title, 68)}
+                  </h3>
+                  <p className=" w-full h-full text-sm text-left text-gray-500 pb-6">
+                    {shortenText(desc, 140)}
+                  </p>
+                  <button
+                    onClick={() => showDetail(index)}
+                    className="inline-flex justify-center items-center px-12 py-3 text-birumud border border-birumud bg-white rounded-tl-custom rounded-br-custom hover:bg-birumud hover:text-white shadow-md hover:shadow-lg"
+                  >
+                    Read more
+                  </button>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="group block relative cursor-pointer h-full w-full">
-              <img
-                className="border-gray-100 shadow-sm h-96 rounded-lg object-cover"
-                src={News2}
-                alt="image slide 1"
-              />
-              <div className="absolute bottom-0 h-1/2 w-full bg-gradient-to-t from-birumud "></div>
-              <div className="absolute bottom-0 px-6 py-6">
-                <h1 className="text-white text-lg font-bold">
-                  Pembangunan Proyek Infrastruktur Daerah
-                </h1>
-                <p className="text-white font-light">
-                  Prospektur Proyek Investasi
-                </p>
-                <div className="items-center justify-center py-2 hidden group-hover:block"></div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="group block relative cursor-pointer h-full w-full">
-              <img
-                className="border-gray-100 shadow-sm h-96 rounded-lg object-cover"
-                src={News3}
-                alt="image slide 1"
-              />
-              <div className="absolute bottom-0 h-1/2 w-full bg-gradient-to-t from-birumud "></div>
-              <div className="absolute bottom-0 px-6 py-6">
-                <h1 className="text-white text-lg font-bold">
-                  Pembangunan Proyek Infrastruktur Daerah
-                </h1>
-                <p className="text-white font-light">
-                  Prospektur Proyek Investasi
-                </p>
-                <div className="items-center justify-center py-2 hidden group-hover:block"></div>
-              </div>
-            </div>
-          </SwiperSlide>
-        </Swiper>
-      </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
     </div>
   );
-}
+};
 
 export default LatestNews;

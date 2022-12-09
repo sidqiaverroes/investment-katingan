@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Nav from "./Nav";
 import HeroImage from "../Assets/hero.png";
-import { CustButtonPrimer, CustButtonSec } from "../Assets/Button";
+import { CustButtonPrimer, CustButtonSec } from "./Button";
 
 function Hero() {
+  const navigate = useNavigate();
+
+  const bringTo = (link) => {
+    navigate(link);
+  };
+
   return (
     <>
       <Nav />
@@ -22,8 +29,12 @@ function Hero() {
               Katingan
             </p>
             <div className="flex gap-4">
-              <CustButtonPrimer text="Explore" />
-              <CustButtonSec text="Hubungi Kami" />
+              <a href="#profil-daerah">
+                <CustButtonPrimer text="Explore" />
+              </a>
+              <a href="#hubungi">
+                <CustButtonSec text="Hubungi Kami" />
+              </a>
             </div>
             <div className="flex flex-row gap-4">
               <div className="flex flex-row gap-4">

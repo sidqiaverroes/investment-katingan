@@ -56,7 +56,7 @@ body{
 
 h1{
     font-weight: 900;
-    font-size: xx-large;
+    font-size: 2.5rem;
 }
 
 h2{
@@ -78,3 +78,6 @@ a:hover{
   border-bottom: 1px solid #40A2D5;
 }
 
+.mapHeight{
+  height: 600px;
+}

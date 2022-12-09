@@ -1,33 +1,29 @@
 import React from "react";
 
 function NavItems() {
-  const A = "Profil Daerah";
-  const B = "Potensi Investasi";
-  const C = "Peluang Investasi";
-  const D = "Peta";
+  const Items = [
+    {
+      title: "Profil Daerah",
+      path: "#profil-daerah",
+    },
+    { title: "Potensi Investasi", path: "#komoditas-unggulan" },
+    { title: "Peta Potensi", path: "#peta-potensi" },
+    { title: "Peluang Investasi", path: "#peluang-investasi" },
+    { title: "Tata Ruang Infrastruktur", path: "" },
+  ];
   return (
-    <div className="flex flex-row gap-4 mr-8 text-white">
-      <a
-        href="#profil-daerah"
-        className="flex items-center w-20 text-sm hover:text-gray-300"
-      >
-        {A}
-      </a>
-      <a
-        href="#peta"
-        className="flex items-center w-20 text-sm hover:text-gray-300"
-      >
-        {B}
-      </a>
-      <a
-        href="#peluang"
-        className="flex items-center w-20 text-sm hover:text-gray-300"
-      >
-        {C}
-      </a>
-      <div className="flex items-center w-20 text-sm hover:text-gray-300">
-        {D}
-      </div>
+    <div className="flex flex-row w-2/5 gap-6 mr-8 text-white">
+      {Items.map((item, index) => {
+        return (
+          <a
+            key={index}
+            href={item.path}
+            className="flex items-center w-fit text-sm hover:text-gray-300"
+          >
+            {item.title}
+          </a>
+        );
+      })}
     </div>
   );
 }

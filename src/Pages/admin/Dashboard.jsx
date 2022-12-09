@@ -1,28 +1,21 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import useRedirectLoggedOutUser from "../../customHooks/useRedirect";
-import { selectIsLoggedIn, selectName } from "../../redux/authSlice";
+import React from "react";
+import { useSelector } from "react-redux";
+import { selectName } from "../../redux/authSlice";
 
 const Dashboard = () => {
-  useRedirectLoggedOutUser("/KatinganAdmin");
-  const dispatch = useDispatch();
-
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-
   //Adjust Name Capitalization
   const name = useSelector(selectName);
-  const words = name.split(" ");
-  let finalName = words
-    .map((word) => {
-      return word[0].toUpperCase() + word.substring(1);
-    })
-    .join(" ");
 
-  useEffect(() => {
-    if (isLoggedIn === true) {
-      console.log(isLoggedIn);
-    }
-  }, [isLoggedIn, dispatch]);
+  let finalName;
+
+  if (name) {
+    const words = name.split(" ");
+    finalName = words
+      .map((word) => {
+        return word[0].toUpperCase() + word.substring(1);
+      })
+      .join(" ");
+  }
 
   return (
     <div className="flex justify-center items-center w-full h-full">

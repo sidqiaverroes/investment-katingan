@@ -19,7 +19,6 @@ export const loginUser = async (userData) => {
     if (response.statusText === "OK") {
       toast.success("Login Successful...");
     }
-    console.log(response.data);
     return response.data;
   } catch (error) {
     const message =
@@ -33,7 +32,10 @@ export const loginUser = async (userData) => {
 // Logout User
 export const logoutUser = async () => {
   try {
-    await axios.get(`${BACKEND_URL}/api/users/logout`);
+    const response = await axios.post(`${BACKEND_URL}/api/users/logout`);
+    if (response.status === 200) {
+      toast.success("Log out success");
+    }
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||

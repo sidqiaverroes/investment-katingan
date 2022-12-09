@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// import { useDispatch } from "react-redux";
+// import { SET_LOGIN } from "./redux/authSlice";
+// import { getLoginStatus } from "./services/authService";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,6 +21,9 @@ import EditProduct from "./Pages/admin/EditProduct";
 import Invest from "./Pages/admin/Invest";
 import AddInvest from "./Pages/admin/AddInvest";
 import EditInvest from "./Pages/admin/EditInvest";
+import News from "./Pages/admin/News";
+import AddNews from "./Pages/admin/AddNews";
+import EditNews from "./Pages/admin/EditNews";
 
 import "./index.css";
 
@@ -65,6 +72,7 @@ function App() {
             </Layout>
           }
         />
+
         <Route
           path="/invest"
           element={
@@ -86,6 +94,31 @@ function App() {
           element={
             <Layout>
               <EditInvest />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/news"
+          element={
+            <Layout>
+              <News />
+            </Layout>
+          }
+        />
+        <Route
+          path="/news/tambah-news"
+          element={
+            <Layout>
+              <AddNews />
+            </Layout>
+          }
+        />
+        <Route
+          path="/news/edit-news/:id"
+          element={
+            <Layout>
+              <EditNews />
             </Layout>
           }
         />

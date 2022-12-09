@@ -1,25 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import productService from "../services/productService";
+import newsService from "../services/newsService";
 import { toast } from "react-toastify";
 
 const initialState = {
-  product: null,
-  products: [],
+  news: null,
+  newses: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
   message: "",
-  totalStoreValue: 0,
-  outOfStock: 0,
-  category: [],
 };
 
 // Create New Product
-export const createProduct = createAsyncThunk(
-  "products/create",
+export const createNews = createAsyncThunk(
+  "newses/create",
   async (formData, thunkAPI) => {
     try {
-      return await productService.createProduct(formData);
+      console.log(formData);
+      return await newsService.createNews(formData);
     } catch (error) {
       const message =
         (error.response &&
@@ -34,11 +32,11 @@ export const createProduct = createAsyncThunk(
 );
 
 // Get all products
-export const getProducts = createAsyncThunk(
-  "products/getAll",
+export const getNews = createAsyncThunk(
+  "newses/getAll",
   async (_, thunkAPI) => {
     try {
-      return await productService.getProducts();
+      return await newsService.getNews();
     } catch (error) {
       const message =
         (error.response &&
@@ -53,11 +51,11 @@ export const getProducts = createAsyncThunk(
 );
 
 // Delete a Product
-export const deleteProduct = createAsyncThunk(
-  "products/delete",
+export const deleteNews = createAsyncThunk(
+  "newses/delete",
   async (id, thunkAPI) => {
     try {
-      return await productService.deleteProduct(id);
+      return await newsService.deleteNews(id);
     } catch (error) {
       const message =
         (error.response &&
@@ -72,11 +70,11 @@ export const deleteProduct = createAsyncThunk(
 );
 
 // Get a product
-export const getProduct = createAsyncThunk(
-  "products/getProduct",
+export const getOneNews = createAsyncThunk(
+  "newses/getOneNews",
   async (id, thunkAPI) => {
     try {
-      return await productService.getProduct(id);
+      return await newsService.getOneNews(id);
     } catch (error) {
       const message =
         (error.response &&
@@ -90,11 +88,11 @@ export const getProduct = createAsyncThunk(
   }
 );
 // Update product
-export const updateProduct = createAsyncThunk(
-  "products/updateProduct",
+export const updateNews = createAsyncThunk(
+  "newses/updateNews",
   async ({ id, formData }, thunkAPI) => {
     try {
-      return await productService.updateProduct(id, formData);
+      return await newsService.updateNews(id, formData);
     } catch (error) {
       const message =
         (error.response &&
@@ -108,125 +106,84 @@ export const updateProduct = createAsyncThunk(
   }
 );
 
-const productSlice = createSlice({
-  name: "product",
+const newsSlice = createSlice({
+  name: "news",
   initialState,
-  reducers: {
-    CALC_STORE_VALUE(state, action) {
-      const products = action.payload;
-      const array = [];
-      products.map((item) => {
-        const { price, quantity } = item;
-        const productValue = price * quantity;
-        return array.push(productValue);
-      });
-      const totalValue = array.reduce((a, b) => {
-        return a + b;
-      }, 0);
-      state.totalStoreValue = totalValue;
-    },
-    CALC_OUTOFSTOCK(state, action) {
-      const products = action.payload;
-      const array = [];
-      products.map((item) => {
-        const { quantity } = item;
-
-        return array.push(quantity);
-      });
-      let count = 0;
-      array.forEach((number) => {
-        if (number === 0 || number === "0") {
-          count += 1;
-        }
-      });
-      state.outOfStock = count;
-    },
-    CALC_CATEGORY(state, action) {
-      const products = action.payload;
-      const array = [];
-      products.map((item) => {
-        const { category } = item;
-
-        return array.push(category);
-      });
-      const uniqueCategory = [...new Set(array)];
-      state.category = uniqueCategory;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(createProduct.pending, (state) => {
+      .addCase(createNews.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(createProduct.fulfilled, (state, action) => {
+      .addCase(createNews.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
         console.log(action.payload);
-        state.products.push(action.payload);
-        toast.success("Product added successfully");
+        state.newses.push(action.payload);
+        toast.success("Created successfully");
       })
-      .addCase(createProduct.rejected, (state, action) => {
+      .addCase(createNews.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
         toast.error(action.payload);
       })
-      .addCase(getProducts.pending, (state) => {
+      .addCase(getNews.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getProducts.fulfilled, (state, action) => {
+      .addCase(getNews.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        state.products = action.payload;
+        state.newses = action.payload;
       })
-      .addCase(getProducts.rejected, (state, action) => {
+      .addCase(getNews.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
         toast.error(action.payload);
       })
-      .addCase(deleteProduct.pending, (state) => {
+      .addCase(deleteNews.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(deleteProduct.fulfilled, (state, action) => {
+      .addCase(deleteNews.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        toast.success("Product deleted successfully");
+        toast.success("Deleted successfully");
       })
-      .addCase(deleteProduct.rejected, (state, action) => {
+      .addCase(deleteNews.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
         toast.error(action.payload);
       })
-      .addCase(getProduct.pending, (state) => {
+      .addCase(getOneNews.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getProduct.fulfilled, (state, action) => {
+      .addCase(getOneNews.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        state.product = action.payload;
+        state.news = action.payload;
       })
-      .addCase(getProduct.rejected, (state, action) => {
+      .addCase(getOneNews.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
         toast.error(action.payload);
       })
-      .addCase(updateProduct.pending, (state) => {
+      .addCase(updateNews.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(updateProduct.fulfilled, (state, action) => {
+      .addCase(updateNews.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        toast.success("Product updated successfully");
+        toast.success("Updated successfully");
       })
-      .addCase(updateProduct.rejected, (state, action) => {
+      .addCase(updateNews.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -236,12 +193,9 @@ const productSlice = createSlice({
 });
 
 export const { CALC_STORE_VALUE, CALC_OUTOFSTOCK, CALC_CATEGORY } =
-  productSlice.actions;
+  newsSlice.actions;
 
-export const selectIsLoading = (state) => state.product.isLoading;
-export const selectProduct = (state) => state.product.product;
-export const selectTotalStoreValue = (state) => state.product.totalStoreValue;
-export const selectOutOfStock = (state) => state.product.outOfStock;
-export const selectCategory = (state) => state.product.category;
+export const selectIsLoading = (state) => state.news.isLoading;
+export const selectNews = (state) => state.news.news;
 
-export default productSlice.reducer;
+export default newsSlice.reducer;
