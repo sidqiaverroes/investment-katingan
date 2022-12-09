@@ -1,4 +1,5 @@
 import React from "react";
+import TablePage from "../components/TablePage";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -21,6 +22,10 @@ ChartJS.register(
   Legend
 );
 
+ChartJS.defaults.color = "black";
+ChartJS.defaults.backgroundColor = "green";
+ChartJS.defaults.borderColor = "green";
+
 function ChartPage() {
   const options = {
     responsive: true,
@@ -31,6 +36,8 @@ function ChartPage() {
       title: {
         display: true,
         text: "PERKEMBANGAN REALISASI INVESTASI KABUPATEN KATINGAN",
+        color: "#40A2D5",
+        font: { weight: "bold", size: 20 },
       },
     },
   };
@@ -55,16 +62,24 @@ function ChartPage() {
           237496700000, 1124980148645, 848775526019, 3790278623286,
           4171745209352, 4994118522073,
         ],
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
+        borderColor: "blue",
+        backgroundColor: "blue",
       },
     ],
   };
 
   return (
-    <div class="min-w-screen min-h-screen bg-gray-200 flex items-center justify-center px-5 py-5">
-      <div class="w-full max-w-3xl">
-        <Line options={options} data={data}></Line>
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="py-5 text-center">
+        REALISASI INVESTASI <br></br> KABUPATEN KATINGAN
+      </h1>
+      <div className="w-3/4 h-auto items-center justify-center">
+        <TablePage />
+      </div>
+      <div class="w-screen h-auto bg-white flex items-center justify-center py-5">
+        <div class=" w-3/4 h-max bg-gray-50 p-10 rounded-xl">
+          <Line options={options} data={data}></Line>
+        </div>
       </div>
     </div>
   );
