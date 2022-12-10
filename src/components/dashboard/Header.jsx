@@ -37,10 +37,8 @@ function Header() {
         </div>
 
         <div className="flex items-center gap-8">
-          <Link to="/dashboard">
-            <span
-              className={splitLocation[1] === "dashboard" ? "activeNav" : ""}
-            >
+          <Link to="/home">
+            <span className={splitLocation[1] === "home" ? "activeNav" : ""}>
               Home
             </span>
           </Link>
@@ -71,13 +69,15 @@ function Header() {
 
           <ul className="dropdown-menu absolute hidden text-gray-800 pt-1 shadow-md w-full">
             <li class="">
-              <button
-                class="flex flex-row gap-2 justify-start items-center rounded-t w-full bg-white hover:bg-birumud border hover:text-white border-gray-300 py-2 px-4 whitespace-no-wrap"
-                href="#"
-              >
-                <i class="fa-regular fa-user"></i>
-                Profile
-              </button>
+              <Link to="/home/profile">
+                <button
+                  class="flex flex-row gap-2 justify-start items-center rounded-t w-full bg-white hover:bg-birumud border hover:text-white border-gray-300 py-2 px-4 whitespace-no-wrap"
+                  href="#"
+                >
+                  <i class="fa-regular fa-user"></i>
+                  Profile
+                </button>
+              </Link>
             </li>
             <li className="">
               <button

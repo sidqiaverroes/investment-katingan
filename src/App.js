@@ -1,10 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// import { useDispatch } from "react-redux";
-// import { SET_LOGIN } from "./redux/authSlice";
-// import { getLoginStatus } from "./services/authService";
-
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -24,6 +20,8 @@ import EditInvest from "./Pages/admin/EditInvest";
 import News from "./Pages/admin/News";
 import AddNews from "./Pages/admin/AddNews";
 import EditNews from "./Pages/admin/EditNews";
+import Profile from "./Pages/admin/Profile";
+import EditProfile from "./Pages/admin/EditProfile";
 
 import "./index.css";
 
@@ -41,7 +39,7 @@ function App() {
         <Route path="/forgotpassword" element={<ForgotPass />} />
         <Route path="/resetpassword/:resetToken" element={<ResetPass />} />
         <Route
-          path="/dashboard"
+          path="/home"
           element={
             <Layout>
               <Dashboard />
@@ -119,6 +117,22 @@ function App() {
           element={
             <Layout>
               <EditNews />
+            </Layout>
+          }
+        />
+        <Route
+          path="/home/profile"
+          element={
+            <Layout>
+              <Profile />
+            </Layout>
+          }
+        />
+        <Route
+          path="/home/edit-profile"
+          element={
+            <Layout>
+              <EditProfile />
             </Layout>
           }
         />
