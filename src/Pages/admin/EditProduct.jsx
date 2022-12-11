@@ -85,7 +85,7 @@ const EditProduct = () => {
 
       await dispatch(updateProduct({ id, formData }));
       await dispatch(getProducts());
-      navigate("/dashboard");
+      navigate("/komoditas");
       setIsLoading(false);
     } catch (error) {
       console.log(error);
