@@ -72,6 +72,10 @@ a:hover{
   color: white
 }
 
+.fa-solid {
+  color: white
+}
+
 .activeNav{
   color: #40A2D5;
   font-weight: 500;

@@ -29,7 +29,7 @@ function Sponsor() {
             return (
               <SwiperSlide key={index}>
                 <div className="overflow-visible">
-                  <div className="flex flex-col justify-center items-center rounded-md border p-6 h-40 w-40 mb-16 ">
+                  <div className="flex flex-col justify-center items-center rounded-md border p-6 h-36 w-36 mb-16 ">
                     <SponsorItems key={index} item={items} />
                   </div>
                 </div>

@@ -9,7 +9,7 @@ function NavItems() {
     { title: "Potensi Investasi", path: "#komoditas-unggulan" },
     { title: "Peta Potensi", path: "#peta-potensi" },
     { title: "Peluang Investasi", path: "#peluang-investasi" },
-    { title: "Tata Ruang Infrastruktur", path: "#peta-potensi" },
+    { title: "Kinerja Investasi", path: "#kinerja-investasi" },
   ];
   return (
     <div className="flex flex-row w-2/5 gap-6 mr-8 text-white">

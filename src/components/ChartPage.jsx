@@ -69,21 +69,24 @@ function ChartPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <h2 className="text-center text-birumud text-5xl font-bold">
-        Kinerja Investasi
-      </h2>
-      <p className="py-5 text-gray-500 text-lg font-light">
-        Perkembangan Realisasi Investasi Tahun ke Tahun (Rp)
-      </p>
-      <div className="w-3/4 h-auto items-center justify-center">
-        <TablePage />
-      </div>
-      <div class="w-screen h-auto bg-white flex items-center justify-center py-5">
-        <div class=" w-3/4 h-max bg-gray-50 p-10 rounded-xl">
+    <div
+      id="kinerja-investasi"
+      className="flex items-center justify-center w-full h-full"
+    >
+      <span className="flex flex-col justify-center items-center max-w-screen">
+        <h2 className="text-center text-birumud text-5xl font-bold">
+          Kinerja Investasi
+        </h2>
+        <p className="py-5 text-gray-500 text-lg font-light">
+          Perkembangan Realisasi Investasi Tahun ke Tahun (Rp)
+        </p>
+        <div className="w-3/4 h-auto items-center justify-center">
+          <TablePage />
+        </div>
+        <div className=" w-3/4 h-max bg-gray-50 p-10 rounded-xl">
           <Line options={options} data={data}></Line>
         </div>
-      </div>
+      </span>
     </div>
   );
 }
