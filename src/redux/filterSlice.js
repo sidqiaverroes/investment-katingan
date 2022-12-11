@@ -13,15 +13,18 @@ const filterSlice = createSlice({
       const tempProducts = products.filter(
         (product) =>
           product.name.toLowerCase().includes(search.toLowerCase()) ||
-          product.location.toLowerCase().includes(search.toLowerCase())
+          product.location.toLowerCase().includes(search.toLowerCase()) ||
+          product.editedBy.toLowerCase().includes(search.toLowerCase())
       );
 
       state.filteredProducts = tempProducts;
     },
     FILTER_NEWS(state, action) {
       const { products, search } = action.payload;
-      const tempProducts = products.filter((product) =>
-        product.title.toLowerCase().includes(search.toLowerCase())
+      const tempProducts = products.filter(
+        (product) =>
+          product.title.toLowerCase().includes(search.toLowerCase()) ||
+          product.editedBy.toLowerCase().includes(search.toLowerCase())
       );
 
       state.filteredProducts = tempProducts;

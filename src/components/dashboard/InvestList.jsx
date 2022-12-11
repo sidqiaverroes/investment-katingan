@@ -124,28 +124,47 @@ const InvestList = ({
             <table className="w-full ">
               <thead>
                 <tr className=" text-gray-500">
-                  <th className="py-2">No</th>
+                  <th className="py-2 px-4 w-16">No</th>
                   <th className="py-2">Name</th>
                   <th className="py-2">Location</th>
                   <th className="py-2">Cost</th>
-                  <th className="py-2">Created At</th>
-                  <th className="py-2">Edited At</th>
+                  <th className="py-2">Date Created</th>
+                  <th className="py-2">Last Edited</th>
+                  <th className="py-2">Edited By</th>
                   <th className="py-2">Action</th>
                 </tr>
               </thead>
 
               <tbody>
                 {currentItems.map((product, index) => {
-                  const { _id, name, location, cost, createdAt, updatedAt } =
-                    product;
+                  const {
+                    _id,
+                    name,
+                    location,
+                    cost,
+                    createdAt,
+                    updatedAt,
+                    editedBy,
+                  } = product;
                   return (
-                    <tr key={_id}>
-                      <td className="py-3">{index + 1}</td>
+                    <tr
+                      key={_id}
+                      className={
+                        (index + 1) % 2 == 0 ? "bg-none" : "border bg-gray-100"
+                      }
+                    >
+                      <td className="py-3 px-6">{index + 1}</td>
                       <td className="py-3">{shortenText(name, 16)}</td>
                       <td className="py-3">{location}</td>
-                      <td className="py-3">{cost}</td>
+                      <td className="py-3">
+                        {new Intl.NumberFormat("en-US", {
+                          style: "currency",
+                          currency: "IDR",
+                        }).format(cost)}
+                      </td>
                       <td className="py-3">{formatDate(createdAt, "date")}</td>
                       <td className="py-3">{formatDate(updatedAt, "date")}</td>
+                      <td className="py-3">{editedBy}</td>
                       <td className="flex flex-row gap-2 py-3">
                         {/* <span>
                           <Link to={`/product-detail/${_id}`}>
