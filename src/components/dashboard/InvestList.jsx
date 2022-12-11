@@ -165,13 +165,13 @@ const InvestList = ({
                       <td className="py-3">{formatDate(createdAt, "date")}</td>
                       <td className="py-3">{formatDate(updatedAt, "date")}</td>
                       <td className="py-3">{editedBy}</td>
-                      <td className="flex flex-row gap-2 py-3">
+                      <td className="py-3">
                         {/* <span>
                           <Link to={`/product-detail/${_id}`}>
                             <IoEyeSharp size={20} />
                           </Link>
                         </span> */}
-                        <button className="p-1 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg">
+                        <button className="p-1 mr-2 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg">
                           <Link to={`/invest/edit-investasi/${_id}`}>
                             <MdEdit size={20} color="white" />
                           </Link>

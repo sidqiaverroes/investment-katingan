@@ -39,6 +39,22 @@ const ProductList = ({
     return text;
   };
 
+  const formatDate = (date, type) => {
+    const string = date.split("T");
+
+    const finalDate = string[0];
+
+    const rawTime = string[1].split(".");
+    const finalTime = rawTime[0];
+
+    if (type === "date") {
+      return finalDate;
+    }
+    if (type === "time") {
+      return finalTime;
+    }
+  };
+
   const delProduct = async (id) => {
     console.log(id);
     await dispatch(deleteProduct(id));
@@ -125,32 +141,54 @@ const ProductList = ({
             <table className="w-full ">
               <thead>
                 <tr className=" text-gray-500">
-                  <th className="py-2">No</th>
+                  <th className="py-2 px-4 w-16">No</th>
                   <th className="py-2">Name</th>
                   <th className="py-2">Location</th>
                   <th className="py-2">Land Area</th>
                   <th className="py-2">Production</th>
+                  <th className="py-2">Date Created</th>
+                  <th className="py-2">Last Edited</th>
+                  <th className="py-2">Edited By</th>
                   <th className="py-2">Action</th>
                 </tr>
               </thead>
 
               <tbody>
                 {currentItems.map((product, index) => {
-                  const { _id, name, location, landArea, production } = product;
+                  const {
+                    _id,
+                    name,
+                    location,
+                    landArea,
+                    production,
+                    createdAt,
+                    updatedAt,
+                    editedBy,
+                  } = product;
                   return (
-                    <tr key={_id}>
-                      <td className="py-3">{index + 1}</td>
+                    <tr
+                      key={_id}
+                      className={
+                        (index + 1) % 2 == 0 ? "bg-none" : "border bg-gray-100"
+                      }
+                    >
+                      <td className="py-3 px-6">{index + 1}</td>
                       <td className="py-3">{shortenText(name, 16)}</td>
-                      <td className="py-3">{location}</td>
-                      <td className="py-3">{landArea}</td>
-                      <td className="py-3">{production}</td>
-                      <td className="flex flex-row gap-2 py-3">
+                      <td className="py-3 w-48">{shortenText(location, 16)}</td>
+                      <td className="py-3 w-40">{landArea}</td>
+                      <td className="py-3 pr-4 w-48">{production}</td>
+                      <td className="py-3 w-36">
+                        {formatDate(createdAt, "date")}
+                      </td>
+                      <td className="py-3">{formatDate(updatedAt, "date")}</td>
+                      <td className="py-3">{editedBy}</td>
+                      <td className="py-3">
                         {/* <span>
                           <Link to={`/product-detail/${_id}`}>
                             <IoEyeSharp size={20} />
                           </Link>
                         </span> */}
-                        <button className="p-1 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg">
+                        <button className="p-1 mr-2 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg">
                           <Link to={`/komoditas/edit-komoditas/${_id}`}>
                             <MdEdit size={20} color="white" />
                           </Link>
