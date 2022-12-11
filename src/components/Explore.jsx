@@ -9,7 +9,7 @@ function Explore() {
   return (
     <div
       id="profil-daerah"
-      className=" flex flex-col gap-20 items-center justify-center h-full w-full bg-white"
+      className=" flex flex-col gap-20 items-center justify-center h-full w-full bg-white py-16"
     >
       <div className="flex flex-row gap-24 items-center justify-center max-w-screen-lg w-full h-auto mt-12">
         <div className="w-1/2 flex flex-col justify-start h-full">

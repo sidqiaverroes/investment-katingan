@@ -16,7 +16,7 @@ function Hero() {
       <Nav />
 
       <div className="w-full h-full bg-white flex items-center justify-center">
-        <div className="flex flex-row gap-12 items-center justify-center max-w-screen-lg	h-auto mt-12">
+        <div className="flex flex-row gap-12 items-center justify-center max-w-screen-lg h-auto mt-12">
           <div className="w-1/2 flex flex-col justify-center h-full gap-8">
             <h2 className=" font-bold text-birumud">
               Profil

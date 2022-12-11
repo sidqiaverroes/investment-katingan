@@ -16,6 +16,7 @@ function Footer() {
             <a
               href="https://www.instagram.com/dpmptsp.katingankab/"
               target="_blank"
+              rel="noreferrer"
               className="flex justify-center items-center w-10 h-10 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg "
             >
               <i className="fa-brands fa-instagram"></i>
@@ -23,6 +24,7 @@ function Footer() {
             <a
               href="https://www.facebook.com/dpmptsp.katingankab"
               target="_blank"
+              rel="noreferrer"
               className="flex justify-center items-center w-10 h-10 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg "
             >
               <i className="fa-brands fa-facebook-f"></i>
@@ -66,6 +68,7 @@ function Footer() {
           <a
             href="https://wa.me/+6282253469776"
             target="_blank"
+            rel="noreferrer"
             className="text-gray-600"
           >
             Whatsapp

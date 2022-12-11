@@ -25,7 +25,7 @@ function Unggulan() {
   return (
     <div
       id="komoditas-unggulan"
-      className="flex flex-col items-center justify-center h-full w-full bg-white py-32"
+      className="flex flex-col items-center justify-center h-full w-full bg-white py-16"
     >
       <div className="justify-center items-center max-w-screen-lg h-auto">
         <h1 className="flex justify-center items-center text-gray-800 font-semibold ">
