@@ -25,6 +25,7 @@ const InvestList = ({
   title,
   linkTo,
   buttonPlaceholder,
+  formatDate,
 }) => {
   const dispatch = useDispatch();
 
@@ -127,19 +128,24 @@ const InvestList = ({
                   <th className="py-2">Name</th>
                   <th className="py-2">Location</th>
                   <th className="py-2">Cost</th>
+                  <th className="py-2">Created At</th>
+                  <th className="py-2">Edited At</th>
                   <th className="py-2">Action</th>
                 </tr>
               </thead>
 
               <tbody>
                 {currentItems.map((product, index) => {
-                  const { _id, name, location, cost } = product;
+                  const { _id, name, location, cost, createdAt, updatedAt } =
+                    product;
                   return (
                     <tr key={_id}>
                       <td className="py-3">{index + 1}</td>
                       <td className="py-3">{shortenText(name, 16)}</td>
                       <td className="py-3">{location}</td>
                       <td className="py-3">{cost}</td>
+                      <td className="py-3">{formatDate(createdAt, "date")}</td>
+                      <td className="py-3">{formatDate(updatedAt, "date")}</td>
                       <td className="flex flex-row gap-2 py-3">
                         {/* <span>
                           <Link to={`/product-detail/${_id}`}>
