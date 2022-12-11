@@ -24,9 +24,10 @@ const Dashboard = () => {
           Selamat datang,<span className="text-birumud"> {finalName}</span>!
         </h1>
         <p className="w-2/3 pt-2 text-gray-600">
-          Ini adalah dashboard admin dari website Katingan. Di sini Anda dapat
-          mengelola informasi yang terdapat di dalam database. Silakan beralih
-          ke tab Komoditas, Investasi, atau News untuk mulai pengelolaan.
+          Ini adalah dashboard admin dari website Sistem Informasi Potensi
+          Investasi Katingan (SIPIKAT). Di sini Anda dapat mengelola informasi
+          yang terdapat di dalam database. Silakan beralih ke tab Komoditas,
+          Investasi, atau News untuk mulai pengelolaan.
         </p>
       </div>
     </div>
