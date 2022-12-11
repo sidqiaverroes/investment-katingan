@@ -26,7 +26,7 @@ const Dashboard = () => {
         <p className="w-2/3 pt-2 text-gray-600">
           Ini adalah dashboard admin dari website Katingan. Di sini Anda dapat
           mengelola informasi yang terdapat di dalam database. Silakan beralih
-          ke tab Komoditas atau Investasi untuk mulai pengelolaan.
+          ke tab Komoditas, Investasi, atau News untuk mulai pengelolaan.
         </p>
       </div>
     </div>

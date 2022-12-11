@@ -34,6 +34,7 @@ module.exports = {
       },
       height: {
         modalCardMd: "680px",
+        loader: "700px",
       },
     },
   },

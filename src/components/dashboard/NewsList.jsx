@@ -133,30 +133,40 @@ const NewsList = ({
           {!isLoading && products.length === 0 ? (
             <p>Belum ada data, silakan tambah data.</p>
           ) : (
-            <table className="w-full ">
+            <table className="w-full">
               <thead>
                 <tr className=" text-gray-500">
-                  <th className="py-2">No</th>
+                  <th className="py-2 px-4 w-16">No</th>
                   <th className="py-2">Title</th>
-                  <th className="py-2">Description</th>
+                  <th className="py-2 px-6">Description</th>
                   <th className="py-2">Date Created</th>
                   <th className="py-2">Last Edited</th>
+                  <th className="py-2">Edited By</th>
                   <th className="py-2">Action</th>
                 </tr>
               </thead>
 
               <tbody>
                 {currentItems.map((product, index) => {
-                  const { _id, title, desc, createdAt, editedAt } = product;
+                  const { _id, title, desc, createdAt, updatedAt, editedBy } =
+                    product;
                   return (
-                    <tr key={_id}>
-                      <td className="py-3">{index + 1}</td>
-                      <td className="py-3">{shortenText(title, 16)}</td>
-                      <td className="py-3">{shortenText(desc, 32)}</td>
+                    <tr
+                      key={_id}
+                      className={
+                        (index + 1) % 2 == 0 ? "bg-none" : "border bg-gray-100"
+                      }
+                    >
+                      <td className="py-3 px-6">{index + 1}</td>
+                      <td className="py-3 w-40">{shortenText(title, 16)}</td>
+                      <td className="py-3 w-96 px-6">
+                        {shortenText(desc, 32)}
+                      </td>
                       <td className="py-3">{formatDate(createdAt, "date")}</td>
-                      <td className="py-3">{formatDate(editedAt, "date")}</td>
-                      <td className="flex flex-row gap-2 py-3">
-                        <button className="p-1 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg">
+                      <td className="py-3">{formatDate(updatedAt, "date")}</td>
+                      <td className="py-3">{editedBy}</td>
+                      <td className="py-3">
+                        <button className="p-1 mr-2 rounded-md bg-birumud hover:bg-birumud2 shadow-md hover:shadow-lg">
                           <Link to={`/news/edit-news/${_id}`}>
                             <MdEdit size={20} color="white" />
                           </Link>

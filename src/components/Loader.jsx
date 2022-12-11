@@ -32,4 +32,18 @@ export const SpinnerImg = () => {
   );
 };
 
+export const LoadProfile = () => {
+  return (
+    <section className="h-full py-24">
+      <div className="flex flex-col gap-8 justify-center items-center h-3/4 py-40">
+        <i className="fa-solid fa-spinner fa-2xl animate-spin"></i>
+        <p className="text-center">
+          Sedang memuat... <br />
+          Mohon tidak menutup laman ini.
+        </p>
+      </div>
+    </section>
+  );
+};
+
 export default Loader;
