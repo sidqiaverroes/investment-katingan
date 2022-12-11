@@ -13,7 +13,7 @@ import "leaflet-defaulticon-compatibility";
 
 import { ShapeFile } from "../Assets/ShapeFile.jsx";
 
-import { TileProviders } from "./dashboard/TileProviders.jsx";
+import { TileProviders } from "./TileProviders.jsx";
 
 import colorbrewer from "colorbrewer";
 
