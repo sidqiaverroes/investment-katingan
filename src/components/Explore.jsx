@@ -23,11 +23,11 @@ function Explore() {
               kabupaten ini adalah "Penyang Hinje Simpei" Hidup Rukun dan Damai
               untuk Kesejahteraan Bersama.
             </p>
-            <div className="flex gap-4">
+            {/* <div className="flex gap-4">
               <a href="#peta-potensi">
                 <CustButtonPrimer text="Explore" />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
         <h1 className="w-1/2 font-medium text-gray-800 text-5xl leading-normal">
