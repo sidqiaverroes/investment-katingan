@@ -90,7 +90,7 @@ function Hubungi() {
         </h2>
         <p className="max-w-2xl pb-4 text-center text-gray-500">
           Layanan perpesanan bagi calon investor untuk konsultansi dan agenda
-          online meeting terkait potensi dan peluang di Katingan
+          online meeting terkait potensi dan peluang investasi di Katingan
         </p>
         <div className="grid grid-cols-5 gap-12 mt-8">
           <div className=" col-span-2">

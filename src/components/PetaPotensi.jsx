@@ -21,8 +21,8 @@ const PetaPotensi = () => {
   // console.log(colorbrewer.schemeGroups.sequential);
   // console.log(colorbrewer)
 
-  const center = [37.98381, 23.727539];
-  const zoom = 100;
+  const center = [-1.888695, 113.386112];
+  const zoom = 8;
 
   const [geodata, setGeodata] = useState(null);
   const [map, setMap] = useState(null);
@@ -131,7 +131,7 @@ const PetaPotensi = () => {
         />
       ) : null}
 
-      <div>
+      <div id="peta-potensi">
         Upload ShapeFile (.zip):{" "}
         <input
           type="file"

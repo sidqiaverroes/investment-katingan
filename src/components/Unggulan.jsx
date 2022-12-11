@@ -32,8 +32,8 @@ function Unggulan() {
           Komoditas Unggulan Kami
         </h1>
         <p className="p-4 text-center text-lg font-normal text-gray-500">
-          Berisi listing Komoditas Unggulan Daerah yang mempunyai produksi
-          tinggi sebagai potensi yang dapat diangkat untuk dijadikan peluang
+          Berisi daftar Potensi Komoditas Unggulan Daerah yang merupakan produk
+          unggulan sebagai potensi yang dapat diangkat untuk dijadikan peluang
           investasi dan usaha
         </p>
         <div className="justify-center items-center w-full h-auto mt-4 py-2">

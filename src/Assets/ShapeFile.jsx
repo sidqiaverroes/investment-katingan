@@ -17,6 +17,8 @@ export const ShapeFile = (props) => {
     fetchData();
   }, [props.data]); // Or [] if effect doesn't need props or state
 
+  // console.log(props.data);
+  console.log(geoJSONData);
   return <GeoJSON key={Math.random()} data={geoJSONData} {...geoJSONProps} />;
 };
 
