@@ -56,7 +56,9 @@ function Footer() {
           >
             Informasi Investasi
           </a>
-          <a className="text-gray-600">Konsultasi Investasi</a>
+          <a href="#hubungi" className="text-gray-600">
+            Konsultasi Investasi
+          </a>
         </div>
 
         <div className="lg:col-span-2 flex lg:flex-col flex-row gap-4">

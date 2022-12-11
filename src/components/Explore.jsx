@@ -14,11 +14,19 @@ function Explore() {
       <div className="flex flex-row gap-24 items-center justify-center max-w-screen-lg w-full h-auto mt-12">
         <div className="w-1/2 flex flex-col justify-start h-full">
           <div className="flex flex-col h-full justify-start gap-4 leading-normal">
-            <h1 className="font-normal text-lg text-gray-500">
-              Di isi dengan tagline branding daya tarik Katingan{" "}
+            <h1 className="text-xl font-bold">
+              Konservasi Katingan untuk Borneo{" "}
             </h1>
+            <p className="text-gray-500 text-lg">
+              Kabupaten Katingan salah satu kabupaten di provinsi Kalimantan
+              Tengah. Kabupaten yang beribu kota di Kasongan, dengan Semboyan
+              kabupaten ini adalah "Penyang Hinje Simpei" Hidup Rukun dan Damai
+              untuk Kesejahteraan Bersama.
+            </p>
             <div className="flex gap-4">
-              <CustButtonPrimer text="Explore" />
+              <a href="#peta-potensi">
+                <CustButtonPrimer text="Explore" />
+              </a>
             </div>
           </div>
         </div>
@@ -46,8 +54,11 @@ function Explore() {
               />
             </div>
             <div className="w-3/4 px-4 text-base text-gray-500">
-              Di isi penjelasan singkat terkait dengan posisi geografis yang
-              strategis
+              Lokasi Kabupaten Katingan secara regional di sentral Asia
+              Tenggara, berada di tengah Indonesia, di tengah Kalimantan serta
+              tepat di tengah Provinsi Kalimantan Tengah menjadikan Kabupaten
+              Katingan memiliki posisi geografis yang strategis serta menjadi
+              jalur trans Kalimantan.
             </div>
           </div>
 
@@ -63,8 +74,9 @@ function Explore() {
               />
             </div>
             <div className="w-3/4 px-4 text-base text-gray-500">
-              Di isi penjelasan singkat terkait dengan posisi geografis yang
-              strategis
+              Kabupaten Katingan memiliki luas wilayah 20.410,90 km2, dengan
+              potensi sumber daya alam, sumber daya lahan dan juga sumber daya
+              manusia sebagai modal dan penggerak ekonomi berkelanjutan.
             </div>
           </div>
 
@@ -80,8 +92,10 @@ function Explore() {
               />
             </div>
             <div className="w-3/4 px-4 text-base text-gray-500">
-              Di isi penjelasan singkat terkait dengan posisi geografis yang
-              strategis
+              Komitmen dan peran serta Pemerintah Daerah Kabupaten Katingan
+              beserta Masyarakat dalam mendukung masuknya investasi, melalui
+              kemudahan proses penanaman modal dalam negeri maupun penanaman
+              modal asing.
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ function ChartPage() {
       },
       title: {
         display: true,
-        text: "PERKEMBANGAN REALISASI INVESTASI KABUPATEN KATINGAN",
+        text: "Perkembangan Realisasi Investasi Kabupaten Katingan (Rp)",
         color: "#40A2D5",
         font: { weight: "bold", size: 20 },
       },
@@ -70,9 +70,12 @@ function ChartPage() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h1 className="py-5 text-center">
-        REALISASI INVESTASI <br></br> KABUPATEN KATINGAN
-      </h1>
+      <h2 className="text-center text-birumud text-5xl font-bold">
+        Kinerja Investasi
+      </h2>
+      <p className="py-5 text-gray-500 text-lg font-light">
+        Perkembangan Realisasi Investasi Tahun ke Tahun (Rp)
+      </p>
       <div className="w-3/4 h-auto items-center justify-center">
         <TablePage />
       </div>

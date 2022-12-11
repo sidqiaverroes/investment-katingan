@@ -51,7 +51,7 @@ function PeluangInvestasi() {
           Peluang Investasi
         </h2>
         <p className="p-4 text-center text-lg font-normal text-gray-500">
-          Berisi potensi investasi yang siap ditawarkan kepada investor
+          Berisi prospektus investasi yang siap ditawarkan kepada investor
         </p>
       </div>
 

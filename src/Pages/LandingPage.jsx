@@ -19,9 +19,9 @@ function LandingPage() {
       <Explore />
       <Unggulan />
       {/* <TablePage /> */}
-      <ChartPage />
       <PetaPotensi />
       <PeluangInvestasi />
+      <ChartPage />
       <LatestNews />
       <Hubungi />
       <Footer />
