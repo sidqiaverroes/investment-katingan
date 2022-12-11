@@ -169,7 +169,7 @@ const ProductList = ({
                     <tr
                       key={_id}
                       className={
-                        (index + 1) % 2 == 0 ? "bg-none" : "border bg-gray-100"
+                        (index + 1) % 2 === 0 ? "bg-none" : "border bg-gray-100"
                       }
                     >
                       <td className="py-3 px-6">{index + 1}</td>

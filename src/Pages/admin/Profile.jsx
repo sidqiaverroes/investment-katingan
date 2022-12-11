@@ -13,6 +13,39 @@ const Profile = () => {
   const [profile, setProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const formatDate = (date, type) => {
+    const month = [
+      "Undefined",
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember",
+    ];
+
+    const string = date.split("T");
+
+    const rawDate = string[0].split("-");
+    const finalDate = rawDate[2] + " " + month[rawDate[1]] + " " + rawDate[0];
+
+    const rawTime = string[1].split(".");
+    const finalTime = rawTime[0];
+
+    if (type === "date") {
+      return finalDate;
+    }
+    if (type === "time") {
+      return finalTime;
+    }
+  };
+
   useEffect(() => {
     setIsLoading(true);
     async function getUserData() {
@@ -28,43 +61,66 @@ const Profile = () => {
   }, [dispatch]);
 
   return (
-    <div className="h-full">
-      {isLoading && <LoadProfile />}
-      <>
-        {!isLoading && profile === null ? (
-          <p>Something went wrong, please reload the page...</p>
-        ) : (
-          <div className="flex justify-center items-center py-12 ">
-            <div className="flex flex-row gap-16 max-w-screen-xl w-full bg-white rounded-lg shadow-md p-20">
-              <span className="">
-                <img
-                  src={profile?.photo}
-                  alt="profilepic"
-                  className="h-80 w-80 rounded-lg object-cover"
-                />
-              </span>
-              <div className="flex flex-col h-full gap-12 py-8">
-                <span className="flex flex-col gap-2 h-full">
-                  <h3 className=" text-4xl font-bold text-gray-800">
-                    {profile?.name}
-                  </h3>
-                  <p className="text-birumud">{profile?.email}</p>
-                  <p>NIP : {profile?.nip}</p>
-                  <p>Jabatan : {profile?.jabatan}</p>
-                  <p>Unit Kerja : {profile?.unitKerja}</p>
+    <>
+      {isLoading ? (
+        <LoadProfile />
+      ) : (
+        <>
+          {!isLoading && profile === null ? (
+            <p>Something went wrong, please reload the page...</p>
+          ) : (
+            <div className="flex justify-center items-center py-12 ">
+              <div className="flex flex-row items-center gap-16 max-w-screen-xl w-full bg-white rounded-lg overflow-hidden shadow-md p-4">
+                <span className="">
+                  <img
+                    src={profile?.photo}
+                    alt="profilepic"
+                    className="h-96 w-96 rounded-lg object-cover"
+                  />
                 </span>
+                <div className="flex flex-col h-full gap-6">
+                  <table className="flex flex-col gap-2 h-full text-lg">
+                    <thead className="text-3xl font-semibold text-gray-800">
+                      <tr>
+                        <th>{profile?.name}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="w-36">Email :</td>
+                        <td>{profile?.email}</td>
+                      </tr>
+                      <tr>
+                        <td>NIP :</td>
+                        <td>{profile?.nip}</td>
+                      </tr>
+                      <tr>
+                        <td>Jabatan :</td>
+                        <td>{profile?.jabatan}</td>
+                      </tr>
+                      <tr>
+                        <td>Unit Kerja :</td>
+                        <td>{profile?.unitKerja}</td>
+                      </tr>
+                      <tr className="text-gray-400 font-medium">
+                        <td>Admin since :</td>
+                        <td>{formatDate(profile?.createdAt, "date")}</td>
+                      </tr>
+                    </tbody>
+                  </table>
 
-                <Link to="/home/edit-profile">
-                  <button className="bg-birumud rounded-md py-2 px-8 text-white hover:bg-birumud2 shadow-md hover:shadow-lg ">
-                    Edit Profile
-                  </button>
-                </Link>
+                  <Link to="/home/edit-profile">
+                    <button className="bg-birumud rounded-md py-2 px-8 text-white hover:bg-birumud2 shadow-md hover:shadow-lg ">
+                      Edit Profile
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </>
-    </div>
+          )}
+        </>
+      )}
+    </>
   );
 };
 

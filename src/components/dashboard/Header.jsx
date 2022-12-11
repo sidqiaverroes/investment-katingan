@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { SET_LOGIN, selectUser } from "../../redux/authSlice";
-import { logoutUser } from "../../services/authService";
+import {
+  SET_LOGIN,
+  SET_USER,
+  SET_NAME,
+  selectUser,
+} from "../../redux/authSlice";
+import { getUser, logoutUser } from "../../services/authService";
 
 import Loader from "../Loader";
 
@@ -13,11 +18,23 @@ function Header() {
   const [isLoading, setIsLoading] = useState(false);
 
   const user = useSelector(selectUser);
-  const { email } = user;
+  const { name, photo } = user;
 
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split("/");
+
+  useEffect(() => {
+    setIsLoading(true);
+    async function getUserData() {
+      const data = await getUser();
+
+      setIsLoading(false);
+      await dispatch(SET_USER(data));
+      await dispatch(SET_NAME(data.name));
+    }
+    getUserData();
+  }, [dispatch]);
 
   const logout = async () => {
     setIsLoading(true);
@@ -62,8 +79,13 @@ function Header() {
         </div>
 
         <div className="dropdown inline-block relative">
-          <button className=" text-gray-800 font-medium py-2 px-4 rounded flex flex-row gap-2 items-center">
-            <span>{email}</span>
+          <button className=" text-gray-800 font-medium py-2 px-4 rounded flex flex-row gap-3 items-center">
+            <img
+              src={photo}
+              alt="profilepic"
+              className="h-8 w-8 object-cover rounded-full"
+            />
+            <span>{name}</span>
             <i className="fa-solid fa-chevron-down"></i>
           </button>
 

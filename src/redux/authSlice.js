@@ -37,6 +37,7 @@ const authSlice = createSlice({
       state.user.jabatan = profile.jabatan;
       state.user.unitKerja = profile.unitKerja;
       state.user.photo = profile.photo;
+      state.user.createdAt = profile.createdAt;
     },
   },
 });

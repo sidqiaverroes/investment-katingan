@@ -165,7 +165,7 @@ const EditProfile = () => {
 
               <span className="grid grid-cols-4 w-full">
                 <label className="flex items-center justify-end mr-20 text-right">
-                  nip :
+                  NIP :
                 </label>
                 <InputBar
                   type="text"
