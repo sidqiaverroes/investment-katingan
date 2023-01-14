@@ -29,6 +29,7 @@ ChartJS.defaults.borderColor = "green";
 function ChartPage() {
   const options = {
     responsive: true,
+    maintainAspectRatio: true,
     plugins: {
       legend: {
         position: "top",

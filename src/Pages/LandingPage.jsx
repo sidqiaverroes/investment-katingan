@@ -9,7 +9,7 @@ import PeluangInvestasi from "../components/PeluangInvestasi";
 import Footer from "../components/Footer";
 import LatestNews from "../components/LatestNews";
 import ChartPage from "../components/ChartPage";
-import TablePage from "../components/TablePage";
+// import TablePage from "../components/TablePage";
 
 function LandingPage() {
   return (
